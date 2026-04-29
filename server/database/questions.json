@@ -1,0 +1,12 @@
+[
+  {
+    "instruction": "Choose the best answer.",
+    "content": "You have multi-tier application that h. an Azure Web Apps front end and art Azure SQL Datable back end.\n\nYou need to recommend a solution to capture and store telemetry data\n\nThe solution must meet the following requirements:\n\n-->  Support using ad-hoc queries to identify baselines.\n\n-->  Trigger alerts when metrics in the baseline are exceeded.\n\n-->  Store application and database metrics in a central location\n\nWhat should you include in the recommendation?",
+    "type": "SINGLE_CHOICE",
+    "a": "Azure Application Insights",
+    "b": "Azure SQL Database Intelligent Insights",
+    "c": "Azure Event Hubs",
+    "d": "Azure Log Analytics",
+    "answer": "a"
+  }
+]

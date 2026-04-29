@@ -1,0 +1,6 @@
+declare module 'quill-image-uploader'
+declare module 'quill-image-resize-module-react'
+declare module 'quill-image-actions'
+declare module 'quill-image-formats'
+declare module '@xeger/quill-image-actions'
+declare module '@xeger/quill-image-formats'

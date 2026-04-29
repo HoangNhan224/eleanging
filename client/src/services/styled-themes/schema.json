@@ -1,0 +1,36 @@
+{
+  "data": {
+    "light": {
+      "id": "T_001",
+      "name": "Light",
+      "colors": {
+        "body": "#FFFFFF",
+        "text": "#000000",
+        "button": {
+          "text": "#FFFFFF",
+          "background": "#000000"
+        },
+        "link": {
+          "text": "teal"
+        }
+      },
+      "font": "Tinos"
+    },
+    "dark": {
+      "id": "T_007",
+      "name": "Dark",
+      "colors": {
+        "body": "#222222",
+        "text": "#ffffff",
+        "button": {
+          "text": "#ffffff",
+          "background": "#0d47a1"
+        },
+        "link": {
+          "text": "#0d47a1"
+        }
+      },
+      "font": "Ubuntu"
+    }
+  }
+}

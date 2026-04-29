@@ -1,0 +1,1 @@
+Chứa các file chunk (PDF) khi upload lên server, và xóa chúng khi upload xong

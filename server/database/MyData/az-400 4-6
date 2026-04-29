@@ -1,0 +1,839 @@
+{
+  "count": 40,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "_class": "assessment",
+      "id": 53175118,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You plan to provision a self-hosted Linux agent.Which authentication mechanism should you use to register the self-hosted agent?",
+        "answers": [
+          "A. personal access token (PAT)",
+          "B. SSH key",
+          "C. Alternate credentials",
+          "D. certificate"
+        ],
+        "explanation": "Note: PAT Supported only on Azure Pipelines and TFS 2017 and newer. After you choose PAT, paste the PAT token you created into the command prompt window. Use a personal access token (PAT) if your Azure DevOps Server or TFS instance and the agent machine are not in a trusted domain. PAT authentication is handled by your Azure DevOps Server or TFS instance instead of the domain controller.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You plan to provision a self-hosted Linux agent.Which authentication mechanism should you use to register the self-hosted agent?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175120,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have Azure Pipelines and GitHub integrated as a source code repository.The build pipeline has continuous integration enabled.You plan to trigger an automated build whenever code changes are committed to the repository.You need to ensure that the system will wait until a build completes before queuing another build.What should you implement?",
+        "answers": [
+          "A. path filters",
+          "B. batch changes",
+          "C. scheduled builds",
+          "D. branch filters"
+        ],
+        "explanation": "Batching CI runs -\nIf you have many team members uploading changes often, you may want to reduce the number of runs you start. If you set batch to true, when a pipeline is running, the system waits until the run is completed, then starts another run with all changes that have not yet been built.\nExample:\n# specific branch build with batching\ntrigger:\nbatch: true\nbranches:\ninclude:\n- master\nTo clarify this example, let us say that a push A to master caused the above pipeline to run. While that pipeline is running, additional pushes B and C occur into the repository. These updates do not start new independent runs immediately. But after the first run is completed, all pushes until that point of time are batched together and a new run is started.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have Azure Pipelines and GitHub integrated as a source code repository.The build pipeline has continuous integration enabled.You plan to trigger an automated build whenever code changes are committed to the repository.You need to ensure that the system will wait until a build completes before queuing another build.What should you implement?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175122,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Your company uses Azure DevOps for the build pipelines and deployment pipelines of Java-based projects.You need to recommend a strategy for managing technical debt.Which action should you include in the recommendation?",
+        "answers": [
+          "A. Configure post-deployment approvals in the deployment pipeline.",
+          "B. Integrate Azure DevOps and SonarQube.",
+          "C. Integrate Azure DevOps and Azure DevTest Labs."
+        ],
+        "explanation": "You can manage technical debt with SonarQube and Azure DevOps.\nNote: Technical debt is the set of problems in a development effort that make forward progress on customer value inefficient. Technical debt saps productivity by making code hard to understand, fragile, time-consuming to change, difficult to validate, and creates unplanned work that blocks progress. Unless they are managed, technical debt can accumulate and hurt the overall quality of the software and the productivity of the development team in the long term\nSonarQube an open source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to:\n✑ Detect Bugs\n✑ Code Smells\n✑ Security Vulnerabilities\n✑ Centralize Quality\n✑ What&#39;s covered in this lab\nReference:\nhttps://azuredevopslabs.com/labs/vstsextend/sonarqube/"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company uses Azure DevOps for the build pipelines and deployment pipelines of Java-based projects.You need to recommend a strategy for managing technical debt.Which action should you include in the recommendation?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175124,
+      "assessment_type": "multi-select",
+      "prompt": {
+        "question": "You use WhiteSource Bolt to scan a Node.js application.The WhiteSource Bolt scan identifies numerous libraries that have invalid licenses. The libraries are used only during development and are not part of a production deployment.You need to ensure that WhiteSource Bolt only scans production dependencies.Which two actions should you perform? Each correct answer presents part of the solution.NOTE: Each correct selection is worth one point.",
+        "answers": [
+          "A. Run npm install and specify the --production flag.",
+          "B. Modify the WhiteSource Bolt policy and set the action for the licenses used by the development tools to Reassign.",
+          "C. Modify the devDependencies section of the project&#39;s Package.json file.",
+          "D. Configure WhiteSource Bolt to scan the node_modules directory only."
+        ],
+        "explanation": "Correct answers are A &amp; D.\n1. When you use --production flag in npm install devDependencies are not installed (so C is wrong).\n2. npm install command installs the dependencies to the local node_modules folder.\n\n\nhttps://docs.npmjs.com/cli/v8/commands/npm-install\n\n3. WhiteSource scan the entire project folder by default. You have to configure it to scan only the node_modules since the production dependencies are there.\n\nhttps://whitesource.atlassian.net/wiki/spaces/WD/pages/33751265/Previous+Version+of+WhiteSource+Bolt+for+Azure+Pipeline#Build-Configuration-for-Azure-DevOps-Server\n\n&quot;If there is a policy match on a Reassign action, the request will be automatically reassigned to a designated user or group in the system which is not the default approver.&quot;\n\nhttps://whitesource.atlassian.net/wiki/spaces/WD/pages/34013519/Managing+Automated+Policies#Applying-Actions-to-a-Library\n\nBut is this action required in the question? Of course no. So even B is wrong"
+      },
+      "correct_response": [
+        "a",
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You use WhiteSource Bolt to scan a Node.js application.The WhiteSource Bolt scan identifies numerous libraries that have invalid licenses. The libraries are used only during development and are not part of a production deployment.You need to ensure that WhiteSource Bolt only scans production dependencies.Which two actions should you perform? Each correct answer presents part of the solution.NOTE: Each correct selection is worth one point.",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175126,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.Your company has a project in Azure DevOps for a new web application.You need to ensure that when code is checked in, a build runs automatically.Solution: From the Triggers tab of the build pipeline, you select Enable continuous integration.Does this meet the goal?",
+        "answers": [
+          "A. Yes",
+          "B. No"
+        ],
+        "explanation": "In Visual Designer you enable continuous integration (CI) by:\n1. Select the Triggers tab.\n2. Enable Continuous integration.\nA continuous integration trigger on a build pipeline indicates that the system should automatically queue a new build whenever a code change is committed.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-designer"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.Your company has a project in Azure DevOps for a new web application.You need to ensure that when code is checked in, a build runs automatically.Solution: From the Triggers tab of the build pipeline, you select Enable continuous integration.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175128,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You need to consider the underlined segment to establish whether it is accurate.Black Duck can be used to make sure that all the open source libraries conform to your company&#39;s licensing criteria.Select ג€No adjustment requiredג€ if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+        "answers": [
+          "A. No adjustment required.",
+          "B. Maven",
+          "C. Bamboo",
+          "D. CMAKE"
+        ],
+        "explanation": "Secure and Manage Open Source Software\nBlack Duck helps organizations identify and mitigate open source security, license compliance and code-quality risks across application and container portfolios.\nBlack Duck Hub and its plugin for Team Foundation Server (TFS) allows you to automatically find and fix open source security vulnerabilities during the build process, so you can proactively manage risk. The integration allows you to receive alerts and fail builds when any Black Duck Hub policy violations are met.\nReference:\nhttps://marketplace.visualstudio.com/items?itemName=black-duck-software.hub-tfs"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You need to consider the underlined segment to establish whether it is accurate.Black Duck can be used to make sure that all the open source libraries conform to your company&#39;s licensing criteria.Select ג€No adjustment requiredג€ if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175130,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You use Azure SQL Database Intelligent Insights and Azure Application Insights for monitoring.You need to write ad-hoc queries against the monitoring data.Which query language should you use?",
+        "answers": [
+          "A. Kusto Query Language (KQL)",
+          "B. PL/pgSQL",
+          "C. PL/SQL",
+          "D. Transact-SQL"
+        ],
+        "explanation": "Azure Monitor Logs is based on Azure Data Explorer, and log queries are written using the same Kusto query language (KQL). This is a rich language designed to be easy to read and author, and you should be able to start using it with minimal guidance.\nReference:\nhttps://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You use Azure SQL Database Intelligent Insights and Azure Application Insights for monitoring.You need to write ad-hoc queries against the monitoring data.Which query language should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175132,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have several Azure Active Directory (Azure AD) accounts.You need to ensure that users use multi-factor authentication (MFA) to access Azure apps from untrusted networks.What should you configure in Azure AD?",
+        "answers": [
+          "A. access reviews",
+          "B. managed identities",
+          "C. entitlement management",
+          "D. conditional access"
+        ],
+        "explanation": "You can configure a Conditional Access policy that requires MFA for access from untrusted networks.\nReference:\nhttps://docs.microsoft.com/en-us/azure/active-directory/conditional-access/howto-conditional-access-policy-all-users-mfa"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have several Azure Active Directory (Azure AD) accounts.You need to ensure that users use multi-factor authentication (MFA) to access Azure apps from untrusted networks.What should you configure in Azure AD?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175134,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You are developing a multi-tier application. The application will use Azure App Service web apps as the front end and an Azure SQL database as the back end.The application will use Azure functions to write some data to Azure Storage.You need to send the Azure DevOps team an email message when the front end fails to return a status code of 200.Which feature should you use?",
+        "answers": [
+          "A. Service Map in Azure Log Analytics",
+          "B. availability tests in Azure Application Insights",
+          "C. Profiler in Azure Application Insights",
+          "D. Application Map in Azure Application Insights"
+        ],
+        "explanation": "the correct answer is B,\nAfter you&#39;ve deployed your web app/website, you can set up recurring tests to monitor availability and responsiveness. Azure Application Insights sends web requests to your application at regular intervals from points around the world. It can &quot;alert&quot; you if your application isn&#39;t responding, or if it responds too slowly.\nhttps://docs.microsoft.com/en-us/azure/azure-monitor/app/monitor-web-app-availability"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You are developing a multi-tier application. The application will use Azure App Service web apps as the front end and an Azure SQL database as the back end.The application will use Azure functions to write some data to Azure Storage.You need to send the Azure DevOps team an email message when the front end fails to return a status code of 200.Which feature should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175136,
+      "assessment_type": "multi-select",
+      "prompt": {
+        "question": "Your company has an Azure DevOps project,The source code for the project is stored in an on-premises repository and uses on an on-premises build server.You plan to use Azure DevOps to control the build process on the build server by using a self-hosted agent.You need to implement the self-hosted agent.You download and install the agent on the build server.Which two actions should you perform next? Each correct answer presents part of the solution.",
+        "answers": [
+          "A. From Azure, create a shared access signature (SAS).",
+          "B. From the build server, create a certificate, and then upload the certificate to Azure Storage.",
+          "C. From the build server, create a certificate, and then upload the certificate to Azure Key Vault.",
+          "D. From DevOps, create a personal access token (PAT).",
+          "E. From the build server, run config.cmd."
+        ],
+        "explanation": "https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops"
+      },
+      "correct_response": [
+        "d",
+        "e"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company has an Azure DevOps project,The source code for the project is stored in an on-premises repository and uses on an on-premises build server.You plan to use Azure DevOps to control the build process on the build server by using a self-hosted agent.You need to implement the self-hosted agent.You download and install the agent on the build server.Which two actions should you perform next? Each correct answer presents part of the solution.",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175138,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have an Azure DevOps organization named Contoso, an Azure DevOps project named Project1, an Azure subscription named Sub1, and an Azure key vault named vault1.You need to ensure that you can reference the values of the secrets stored in vault1 in all the pipelines of Project1. The solution must prevent the values from being stored in the pipelines.What should you do?",
+        "answers": [
+          "A. Create a variable group in Project1.",
+          "B. Add a secure file to Project1.",
+          "C. Modify the security settings of the pipelines.",
+          "D. Configure the security policy of Contoso."
+        ],
+        "explanation": "Use a variable group to store values that you want to control and make available across multiple pipelines.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have an Azure DevOps organization named Contoso, an Azure DevOps project named Project1, an Azure subscription named Sub1, and an Azure key vault named vault1.You need to ensure that you can reference the values of the secrets stored in vault1 in all the pipelines of Project1. The solution must prevent the values from being stored in the pipelines.What should you do?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175140,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.Your company has a project in Azure DevOps for a new web application.You need to ensure that when code is checked in, a build runs automatically.Solution: From the Triggers tab of the build pipeline, you select Batch changes while a build is in progress.Does this meet the goal?",
+        "answers": [
+          "A. Yes",
+          "B. No"
+        ],
+        "explanation": "Instead, In Visual Designer you enable continuous integration (CI) by:\n1. Select the Triggers tab.\n2. Enable Continuous integration.\n\nNote: Batch changes -\nSelect this check box if you have many team members uploading changes often and you want to reduce the number of builds you are running. If you select this option, when a build is running, the system waits until the build is completed and then queues another build of all changes that have not yet been built.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-designer"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.Your company has a project in Azure DevOps for a new web application.You need to ensure that when code is checked in, a build runs automatically.Solution: From the Triggers tab of the build pipeline, you select Batch changes while a build is in progress.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175142,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have an application that consists of several Azure App Service web apps and Azure functions.You need to assess the security of the web apps and the functions.Which Azure feature can you use to provide a recommendation for the security of the application?",
+        "answers": [
+          "A. Security &amp; Compliance in Azure Log Analytics",
+          "B. Resource health in Azure Service Health",
+          "C. Smart Detection in Azure Application Insights",
+          "D. Compute &amp; apps in Azure Security Center"
+        ],
+        "explanation": "Monitor compute and app services: Compute &amp; apps include the App Services tab, which App services: list of your App service environments and current security state of each.\n\nRecommendations -\nThis section has a set of recommendations for each VM and computer, web and worker roles, Azure App Service Web Apps, and Azure App Service Environment that Security Center monitors. The first column lists the recommendation. The second column shows the total number of resources that are affected by that recommendation. The third column shows the severity of the issue.\nIncorrect Answers:\nC: Smart Detection automatically warns you of potential performance problems, not security problems in your web application.\nReference:\nhttps://docs.microsoft.com/en-us/azure/azure-monitor/app/proactive-diagnostics"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have an application that consists of several Azure App Service web apps and Azure functions.You need to assess the security of the web apps and the functions.Which Azure feature can you use to provide a recommendation for the security of the application?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175144,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Your company uses Azure DevOps.Only users who have accounts in Azure Active Directory can access the Azure DevOps environment.You need to ensure that only devices that are connected to the on-premises network can access the Azure DevOps environment.What should you do?",
+        "answers": [
+          "A. Assign the Stakeholder access level to all users.",
+          "B. In Azure Active Directory, configure risky sign-ins.",
+          "C. In Azure DevOps, configure Security in Project Settings.",
+          "D. In Azure Active Directory, configure conditional access."
+        ],
+        "explanation": "Conditional Access is a capability of Azure Active Directory. With Conditional Access, you can implement automated access control decisions for accessing your cloud apps that are based on conditions.\nConditional Access policies are enforced after the first-factor authentication has been completed.\nReference:\nhttps://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company uses Azure DevOps.Only users who have accounts in Azure Active Directory can access the Azure DevOps environment.You need to ensure that only devices that are connected to the on-premises network can access the Azure DevOps environment.What should you do?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175146,
+      "assessment_type": "multi-select",
+      "prompt": {
+        "question": "Your company has an on-premises Bitbucket Server that is used for Git-based source control. The server is protected by a firewall that blocks inbound Internet traffic.You plan to use Azure DevOps to manage the build and release processes.Which two components are required to integrate Azure DevOps and Bitbucket? Each correct answer presents part of the solution.NOTE: Each correct selection is worth one point.",
+        "answers": [
+          "A. a deployment group",
+          "B. a Microsoft-hosted agent",
+          "C. service hooks",
+          "D. a self-hosted agent",
+          "E. an External Git service connection"
+        ],
+        "explanation": "E: GitLab CI/CD can be used with GitHub or any other Git server such as BitBucket. Instead of moving your entire project to GitLab, you can connect your external repository to get the benefits of GitLab CI/CD.\nNote: When a pipeline uses a remote, 3rd-party repository host such as Bitbucket Cloud, the repository is configured with webhooks that notify Azure Pipelines\nServer or TFS when code has changed and a build should be triggered. Since on-premises installations are normally protected behind a firewall, 3rd-party webhooks are unable to reach the on-premises server. As a workaround, you can use the External Git repository type which uses polling instead of webhooks to trigger a build when code has changed.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/repos/pipeline-options-for-git"
+      },
+      "correct_response": [
+        "d",
+        "e"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company has an on-premises Bitbucket Server that is used for Git-based source control. The server is protected by a firewall that blocks inbound Internet traffic.You plan to use Azure DevOps to manage the build and release processes.Which two components are required to integrate Azure DevOps and Bitbucket? Each correct answer presents part of the solution.NOTE: Each correct selection is worth one point.",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175148,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You need to consider the underlined segment to establish whether it is accurate.To deploy an application to a number of Azure virtual machines, you should create a universal group.Select ג€No adjustment requiredג€ if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+        "answers": [
+          "A. No adjustment required.",
+          "B. security",
+          "C. deployment",
+          "D. resource"
+        ],
+        "explanation": "When authoring an Azure Pipelines or TFS Release pipeline, you can specify the deployment targets for a job using a deployment group.\nIf the target machines are Azure VMs, you can quickly and easily prepare them by installing the Azure Pipelines Agent Azure VM extension on each of the VMs, or by using the Azure Resource Group Deployment task in your release pipeline to create a deployment group dynamically. Reference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/release/deployment-groups"
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You need to consider the underlined segment to establish whether it is accurate.To deploy an application to a number of Azure virtual machines, you should create a universal group.Select ג€No adjustment requiredג€ if the underlined segment is accurate. If the underlined segment is inaccurate, select the accurate option.",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175150,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have an Azure subscription that contains resources in several resource groups.You need to design a monitoring strategy that will provide a consolidated view. The solution must support the following requirements:✑ Support role-based access control (RBAC) by using Azure Active Directory (Azure AD) identifies.✑ Include visuals from Azure Monitor that are generated by using the Kusto query language.✑ Support documentation written in markdown.✑ Use the latest data available for each visual.<br>What should you use to create the consolidated view?",
+        "answers": [
+          "A. Azure Monitor",
+          "B. Microsoft Power BI",
+          "C. Azure Data Explorer",
+          "D. Azure dashboards"
+        ],
+        "explanation": "D. is the correct Answer , Azure Dashboards https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have an Azure subscription that contains resources in several resource groups.You need to design a monitoring strategy that will provide a consolidated view. The solution must support the following requirements:✑ Support role-based access control (RBAC) by using Azure Active Directory (Azure AD) identifies.✑ Include visuals from Azure Monitor that are generated by using the Kusto query language.✑ Support documentation written in markdown.✑ Use the latest data available for each visual.What should you use to create the consolidated view?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175152,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Your company makes use of Azure SQL Database Intelligent Insights and Azure Application Insights for monitoring purposes.You have been tasked with analyzing the monitoring using ad-hoc queries. You need to utilize the correct query language.Solution: You use the Transact-SQL.Does the solution meet the goal?",
+        "answers": [
+          "A. Yes",
+          "B. No"
+        ],
+        "explanation": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/azure-sql"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company makes use of Azure SQL Database Intelligent Insights and Azure Application Insights for monitoring purposes.You have been tasked with analyzing the monitoring using ad-hoc queries. You need to utilize the correct query language.Solution: You use the Transact-SQL.Does the solution meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175154,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.You need to recommend an integration strategy for the build process of a Java application. The solution must meet the following requirements:✑ The build must access an on-premises dependency management system.✑ The build outputs must be stored as Server artifacts in Azure DevOps.✑ The source code must be stored in a Git repository in Azure DevOps.Solution: Configure the build pipeline to use a Microsoft-hosted agent pool running a Linux image. Include the Java Tool Installer task in the build pipeline.Does this meet the goal?",
+        "answers": [
+          "A. Yes",
+          "B. No"
+        ],
+        "explanation": ""
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.You need to recommend an integration strategy for the build process of a Java application. The solution must meet the following requirements:✑ The build must access an on-premises dependency management system.✑ The build outputs must be stored as Server artifacts in Azure DevOps.✑ The source code must be stored in a Git repository in Azure DevOps.Solution: Configure the build pipeline to use a Microsoft-hosted agent pool running a Linux image. Include the Java Tool Installer task in the build pipeline.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175156,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You are making use of Azure DevOps manage build pipelines, and also deploy pipelines.The development team is quite large, and is regularly added to.You have been informed that the management of users and licenses must be automated when it can be.Which of the following is a task that can&#39;t be automated?",
+        "answers": [
+          "A. Group membership changes",
+          "B. License assignment",
+          "C. Assigning entitlements",
+          "D. License procurement"
+        ],
+        "explanation": "The correct answer might A or D. IDK"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You are making use of Azure DevOps manage build pipelines, and also deploy pipelines.The development team is quite large, and is regularly added to.You have been informed that the management of users and licenses must be automated when it can be.Which of the following is a task that can&#39;t be automated?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175158,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Your company is building a new solution in Java.The company currently uses a SonarQube server to analyze the code of .NET solutions.You need to analyze and monitor the code quality of the Java solution.Which task types should you add to the build pipeline?",
+        "answers": [
+          "A. Grunt",
+          "B. Octopus",
+          "C. Maven",
+          "D. Gulp"
+        ],
+        "explanation": "SonarQube is a set of static analyzers that can be used to identify areas of improvement in your code. It allows you to analyze the technical debt in your project and keep track of it in the future. With Maven and Gradle build tasks, you can run SonarQube analysis with minimal setup in a new or existing Azure DevOps\nServices build task.\nPrepare Analysis Configuration task, to configure all the required settings before executing the build.\n✑ This task is mandatory.\n✑ In case of .NET solutions or Java projects, it helps to integrate seamlessly with MSBuild, Maven and Gradle tasks.\nNote: There are several versions of this question in the exam. The question can have three correct answers:\n✑ MSBuild\n✑ Maven\n✑ Gradle\nThe question can also have different incorrect options, including:\n✑ Chef\n✑ xCODE\n✑ CocoaPods\nReference:\nhttps://docs3.sonarqube.org/latest/analysis/scan/sonarscanner-for-azure-devops/ https://docs.microsoft.com/en-us/azure/devops/java/sonarqube?view=azure-devops"
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company is building a new solution in Java.The company currently uses a SonarQube server to analyze the code of .NET solutions.You need to analyze and monitor the code quality of the Java solution.Which task types should you add to the build pipeline?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175160,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have a build pipeline in Azure Pipelines.You create a Slack App Integration.You need to send build notifications to a Slack channel named #Development.What should you do first?",
+        "answers": [
+          "A. Create a project-level notification.",
+          "B. Configure a service connection.",
+          "C. Create a global notification.",
+          "D. Creates a service hook subscription."
+        ],
+        "explanation": "Create a service hook for Azure DevOps with Slack to post messages to Slack in response to events in your Azure DevOps organization, such as completed builds, code changes, pull requests, releases, work items changes, and more.\nNote:\n1. Go to your project Service Hooks page:\nhttps://{orgName}/{project_name}/_settings/serviceHooks\nSelect Create Subscription.\n2. Choose the types of events you want to appear in your Slack channel.\n3. Paste the Web Hook URL from the Slack integration that you created and select Finish.\n4. Now, when the event you configured occurs in your project, a notification appears in your team&#39;s Slack channel.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/service-hooks/services/slack"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have a build pipeline in Azure Pipelines.You create a Slack App Integration.You need to send build notifications to a Slack channel named #Development.What should you do first?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175162,
+      "assessment_type": "multi-select",
+      "prompt": {
+        "question": "You have a build pipeline in Azure Pipelines that uses different jobs to compile an application for 10 different architectures.The build pipeline takes approximately one day to complete.You need to reduce the time it takes to execute the build pipeline.Which two actions should you perform? Each correct answer presents part of the solution.NOTE: Each correct selection is worth one point.",
+        "answers": [
+          "A. Move to a blue/green deployment pattern",
+          "B. Create a deployment group",
+          "C. Increase the number of parallel jobs",
+          "D. Reduce the size of the repository",
+          "E. Create an agent pool"
+        ],
+        "explanation": "C and E makes sense. https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/pools-queues"
+      },
+      "correct_response": [
+        "c",
+        "e"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have a build pipeline in Azure Pipelines that uses different jobs to compile an application for 10 different architectures.The build pipeline takes approximately one day to complete.You need to reduce the time it takes to execute the build pipeline.Which two actions should you perform? Each correct answer presents part of the solution.NOTE: Each correct selection is worth one point.",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175164,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You are automating the build process for a Java-based application by using Azure DevOps.You need to add code coverage testing and publish the outcomes to the pipeline.What should you use?",
+        "answers": [
+          "A. Bullseye Coverage",
+          "B. JUnit",
+          "C. JaCoCo",
+          "D. MSTest"
+        ],
+        "explanation": "Use Publish Code Coverage Results task in a build pipeline to publish code coverage results to Azure Pipelines or TFS, which were produced by a build in\nCobertura or JaCoCo format.\nIncorrect Answers:\nA: Bullseye Coverage is used for C++ code, and not for Java.\nNote:\nThere are several versions of this question in the exam. The question has two possible correct answers:\n✑ Cobertura\n✑ JaCoCo\nOther incorrect answer options you may see on the exam include the following:\n✑ Coverlet\n✑ NUnit\n✑ Coverage.py\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-code-coverage-results"
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You are automating the build process for a Java-based application by using Azure DevOps.You need to add code coverage testing and publish the outcomes to the pipeline.What should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175166,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Your company deploys applications in Docker containers.You want to detect known exploits in the Docker images used to provision the Docker containers.You need to integrate image scanning into the application lifecycle. The solution must expose the exploits as early as possible during the application lifecycle.What should you configure?",
+        "answers": [
+          "A. a task executed in the continuous integration pipeline and a scheduled task that analyzes the image registry",
+          "B. manual tasks performed during the planning phase and the deployment phase",
+          "C. a task executed in the continuous deployment pipeline and a scheduled task against a running production container",
+          "D. a task executed in the continuous integration pipeline and a scheduled task that analyzes the production container"
+        ],
+        "explanation": "You can use the Docker task to sign into ACR and then use a subsequent script to pull an image and scan the container image for vulnerabilities.\nUse the docker task in a build or release pipeline. This task can be used with Docker or Azure Container registry.\nIncorrect Answers:\nC: We should not wait until deployment. We want to detect the exploits as early as possible.\nD: We should wait until the image is in the product container. We want to detect the exploits as early as possible.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/articles/security-validation-cicd-pipeline?view=vsts"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company deploys applications in Docker containers.You want to detect known exploits in the Docker images used to provision the Docker containers.You need to integrate image scanning into the application lifecycle. The solution must expose the exploits as early as possible during the application lifecycle.What should you configure?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175168,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You use Azure Pipelines to manage project builds and deployments.You plan to use Azure Pipelines for Microsoft Teams to notify the legal team when a new build is ready for release.You need to configure the Organization Settings in Azure DevOps to support Azure Pipelines for Microsoft Teams.What should you turn on?",
+        "answers": [
+          "A. Third-party application access via OAuth",
+          "B. Azure Active Directory Conditional Access Policy Validation",
+          "C. Alternate authentication credentials",
+          "D. SSH authentication"
+        ],
+        "explanation": "The Azure Pipelines app uses the OAuth authentication protocol, and requires Third-party application access via OAuth for the organization to be enabled. To enable this setting, navigate to Organization Settings &gt; Security &gt; Policies, and set the Third-party application access via OAuth for the organization setting to On.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/integrations/microsoft-teams"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You use Azure Pipelines to manage project builds and deployments.You plan to use Azure Pipelines for Microsoft Teams to notify the legal team when a new build is ready for release.You need to configure the Organization Settings in Azure DevOps to support Azure Pipelines for Microsoft Teams.What should you turn on?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175170,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You configure an Azure Application Insights availability test.You need to notify the customer services department at your company by email when availability is degraded.You create an Azure logic app that will handle the email and follow up actions.Which type of trigger should you use to invoke the logic app?",
+        "answers": [
+          "A. an HTTPWebhook trigger",
+          "B. an HTTP trigger",
+          "C. a Request trigger",
+          "D. an ApiConnection trigger"
+        ],
+        "explanation": "Correct answer is C. Probably the following article has generated a misunderstanding:\n\nhttps://docs.microsoft.com/en-us/azure/app-service/tutorial-send-email?tabs=dotnet\n\nIt uses the Action &quot;When an HTTP request is received&quot; and defines it as HTTP Request trigger. But this is a Request Trigger and not an HTTP Trigger.\nPlease look at the document below where it is explained the difference very well.\n\nhttps://docs.microsoft.com/en-us/azure/connectors/connectors-native-reqres\n\nYou have to consider that http trigger is used only for outbound requests from the logic app. You can&#39;t use it for Inbound http requests. For those you have to use Request Trigger."
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You configure an Azure Application Insights availability test.You need to notify the customer services department at your company by email when availability is degraded.You create an Azure logic app that will handle the email and follow up actions.Which type of trigger should you use to invoke the logic app?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175172,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You are monitoring the health and performance of an Azure web app by using Azure Application Insights.You need to ensure that an alert is sent when the web app has a sudden rise in performance issues and failures.What should you use?",
+        "answers": [
+          "A. custom events",
+          "B. Application Insights Profiler",
+          "C. usage analysis",
+          "D. Smart Detection",
+          "E. Continuous export"
+        ],
+        "explanation": "Smart Detection automatically warns you of potential performance problems and failure anomalies in your web application. It performs proactive analysis of the telemetry that your app sends to Application Insights. If there is a sudden rise in failure rates, or abnormal patterns in client or server performance, you get an alert.\nReference:\nhttps://docs.microsoft.com/en-us/azure/azure-monitor/app/proactive-diagnostics"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You are monitoring the health and performance of an Azure web app by using Azure Application Insights.You need to ensure that an alert is sent when the web app has a sudden rise in performance issues and failures.What should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175174,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have a multi-tier application. The front end of the application is hosted in Azure App Service.You need to identify the average load times of the application pages.What should you use?",
+        "answers": [
+          "A. Azure Application Insights",
+          "B. the activity log of the App Service",
+          "C. the diagnostics logs of the App Service",
+          "D. Azure Advisor"
+        ],
+        "explanation": "Application Insights will tell you about any performance issues and exceptions, and help you find and diagnose the root causes.\nApplication Insights can monitor both Java and ASP.NET web applications and services, WCF services. They can be hosted on-premises, on virtual machines, or as Microsoft Azure websites.\nOn the client side, Application Insights can take telemetry from web pages and a wide variety of devices including iOS, Android, and Windows Store apps.\nReference:\nhttps://docs.microsoft.com/en-us/azure/azure-monitor/app/web-monitor-performance"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have a multi-tier application. The front end of the application is hosted in Azure App Service.You need to identify the average load times of the application pages.What should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175176,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have an Azure DevOps organization named Contoso and an Azure subscription. The subscription contains an Azure virtual machine scale set named VMSS1 and an Azure Standard Load Balancer named LB1. LB1 distributes incoming requests across VMSS1 instances.You use Azure DevOps to build a web app named App1 and deploy App1 to VMSS1. App1 is accessible via HTTPS only and configured to require mutual authentication by using a client certificate.You need to recommend a solution for implementing a health check of App1. The solution must meet the following requirements:✑ Identify whether individual instances of VMSS1 are eligible for an upgrade operation.✑ Minimize administrative effort.What should you include in the recommendation?",
+        "answers": [
+          "A. an Azure Load Balancer health probe",
+          "B. Azure Monitor autoscale",
+          "C. the Custom Script Extension",
+          "D. the Application Health extension"
+        ],
+        "explanation": "Monitoring your application health is an important signal for managing and upgrading your deployment. Azure virtual machine scale sets provide support for rolling upgrades including automatic OS-image upgrades, which rely on health monitoring of the individual instances to upgrade your deployment. You can also use health extension to monitor the application health of each instance in your scale set and perform instance repairs using automatic instance repairs.\nReference:\nhttps://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have an Azure DevOps organization named Contoso and an Azure subscription. The subscription contains an Azure virtual machine scale set named VMSS1 and an Azure Standard Load Balancer named LB1. LB1 distributes incoming requests across VMSS1 instances.You use Azure DevOps to build a web app named App1 and deploy App1 to VMSS1. App1 is accessible via HTTPS only and configured to require mutual authentication by using a client certificate.You need to recommend a solution for implementing a health check of App1. The solution must meet the following requirements:✑ Identify whether individual instances of VMSS1 are eligible for an upgrade operation.✑ Minimize administrative effort.What should you include in the recommendation?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175178,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Your company uses Azure Artifacts for package management.You need to configure an upstream source in Azure Artifacts for Python packages.Which repository type should you use as an upstream source?",
+        "answers": [
+          "A. npmjs.org",
+          "B. PyPI",
+          "C. Maven Central",
+          "D. third-party trusted Python"
+        ],
+        "explanation": "Get started with Python packages in Azure Artifacts\n\nCreate a feed -\n1. Select Artifacts (in the left navigation of your Azure DevOps project).\n2. On the Artifacts page, select Create Feed.\n3. In the Create new feed dialog box:\n4. In the Name field, give the feed a name.\nPyPI is the default repository name for twine, which is a tool for publishing Python packages.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/artifacts/quickstarts/python-packages"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company uses Azure Artifacts for package management.You need to configure an upstream source in Azure Artifacts for Python packages.Which repository type should you use as an upstream source?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175180,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Your company has a project in Azure DevOps for a new application. The application will be deployed to several Azure virtual machines that run Windows Server2019.You need to recommend a deployment strategy for the virtual machines. The strategy must meet the following requirements:✑ Ensure that the virtual machines maintain a consistent configuration.✑ Minimize administrative effort to configure the virtual machines.What should you include in the recommendation?",
+        "answers": [
+          "A. Azure Resource Manager templates and the PowerShell Desired State Configuration (DSC) extension for Windows",
+          "B. Deployment YAML and Azure pipeline deployment groups",
+          "C. Azure Resource Manager templates and the Custom Script Extension for Windows",
+          "D. Deployment YAML and Azure pipeline stage templates"
+        ],
+        "explanation": ""
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company has a project in Azure DevOps for a new application. The application will be deployed to several Azure virtual machines that run Windows Server2019.You need to recommend a deployment strategy for the virtual machines. The strategy must meet the following requirements:✑ Ensure that the virtual machines maintain a consistent configuration.✑ Minimize administrative effort to configure the virtual machines.What should you include in the recommendation?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175182,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.You use Azure Pipelines to build and test a React.js application.You have a pipeline that has a single job.You discover that installing JavaScript packages from npm takes approximately five minutes each time you run the pipeline.You need to recommend a solution to reduce the pipeline execution time.Solution: You recommend defining a container job that uses a custom container that has the JavaScript packages preinstalled.Does this meet the goal?",
+        "answers": [
+          "A. Yes",
+          "B. No"
+        ],
+        "explanation": "A (Yes).\n&quot;Containers provide isolation from the host and allow you to pin specific versions of tools and dependencies. Host jobs require less initial setup and infrastructure to maintain&quot;\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops\n&quot;Containers can be hosted on registries other than Docker Hub. To host an image on Azure Container Registry or another private container registry, add a service connection to the private registry. Then you can reference it in a container spec:&quot;\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops#endpoints\nSince it&#39;s possible to build an application inside a container and the container can be generated via a custom image, I&#39;d say that using in the build pipeline a container with an image that already has the js packages installed can be a great solution."
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.You use Azure Pipelines to build and test a React.js application.You have a pipeline that has a single job.You discover that installing JavaScript packages from npm takes approximately five minutes each time you run the pipeline.You need to recommend a solution to reduce the pipeline execution time.Solution: You recommend defining a container job that uses a custom container that has the JavaScript packages preinstalled.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175184,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.You have an approval process that contains a condition. The condition requires that releases be approved by a team leader before they are deployed.You have a policy stating that approvals must occur within eight hours.You discover that deployment fail if the approvals take longer than two hours.You need to ensure that the deployments only fail if the approvals take longer than eight hours.Solution: From Post-deployment conditions, you modify the Timeout setting for post-deployment approvals.Does this meet the goal?",
+        "answers": [
+          "A. Yes",
+          "B. No"
+        ],
+        "explanation": "Use Pre-deployments conditions instead.\nUse a gate instead of an approval instead.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/pipelines/release/approvals/gates"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.You have an approval process that contains a condition. The condition requires that releases be approved by a team leader before they are deployed.You have a policy stating that approvals must occur within eight hours.You discover that deployment fail if the approvals take longer than two hours.You need to ensure that the deployments only fail if the approvals take longer than eight hours.Solution: From Post-deployment conditions, you modify the Timeout setting for post-deployment approvals.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175186,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have been tasked with strengthening the security of your team&#39;s development process.You need to suggest a security tool type for the Continuous Integration (CI) phase of the development process.Which of the following is the option you would suggest?",
+        "answers": [
+          "A. Penetration testing",
+          "B. Static code analysis",
+          "C. Threat modeling",
+          "D. Dynamic code analysis"
+        ],
+        "explanation": "Validation in the CI/CD begins before the developer commits his or her code. Static code analysis tools in the IDE provide the first line of defense to help ensure that security vulnerabilities are not introduced into the CI/CD process. Reference:\nhttps://docs.microsoft.com/en-us/azure/devops/articles/security-validation-cicd-pipeline?view=vsts"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have been tasked with strengthening the security of your team&#39;s development process.You need to suggest a security tool type for the Continuous Integration (CI) phase of the development process.Which of the following is the option you would suggest?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175188,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You plan to onboard 10 new developers.You need to recommend a development environment that meets the following requirements:✑ Integrates with GitHub✑ Provides integrated debugging tools✑ Supports remote workers and hot-desking environments✑ Supports developers who use browsers, tablets, and ChromebooksWhat should you recommend?",
+        "answers": [
+          "A. VS Code",
+          "B. Xamarin Studio",
+          "C. MonoDevelop",
+          "D. Github Studio Codespaces"
+        ],
+        "explanation": "You can develop in your codespace directly in Visual Studio Code by connecting the GitHub Codespaces extension with your account on GitHub.\nReference:\nhttps://docs.github.com/en/codespaces/developing-in-codespaces/using-codespaces-in-visual-studio-code"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You plan to onboard 10 new developers.You need to recommend a development environment that meets the following requirements:✑ Integrates with GitHub✑ Provides integrated debugging tools✑ Supports remote workers and hot-desking environments✑ Supports developers who use browsers, tablets, and ChromebooksWhat should you recommend?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175190,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.Your company uses Azure DevOps to manage the build and release processes for applications.You use a Git repository for applications source control.You need to implement a pull request strategy that reduces the history volume in the master branch.Solution: You implement a pull request strategy that uses an explicit merge.Does this meet the goal?",
+        "answers": [
+          "A. Yes",
+          "B. No"
+        ],
+        "explanation": "Instead use squash merge.\nNote:\nNo fast-forward merge - This option merges the commit history of the source branch when the pull request closes and creates a merge commit in the target branch.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/repos/git/branch-policies"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.Your company uses Azure DevOps to manage the build and release processes for applications.You use a Git repository for applications source control.You need to implement a pull request strategy that reduces the history volume in the master branch.Solution: You implement a pull request strategy that uses an explicit merge.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175192,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.You need to recommend an integration strategy for the build process of a Java application. The solution must meet the following requirements:✑ The builds must access an on-premises dependency management system.✑ The build outputs must be stored as Server artifacts in Azure DevOps.✑ The source code must be stored in a Git repository in Azure DevOps.Solution: Configure an Octopus Tentacle on an on-premises machine. Use the Package Application task in the build pipeline.Does this meet the goal?",
+        "answers": [
+          "A. Yes",
+          "B. No"
+        ],
+        "explanation": ""
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that might meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.After you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.You need to recommend an integration strategy for the build process of a Java application. The solution must meet the following requirements:✑ The builds must access an on-premises dependency management system.✑ The build outputs must be stored as Server artifacts in Azure DevOps.✑ The source code must be stored in a Git repository in Azure DevOps.Solution: Configure an Octopus Tentacle on an on-premises machine. Use the Package Application task in the build pipeline.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175194,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "You have an Azure DevOps organization named Contoso and an Azure subscription.You use Azure DevOps to build a containerized app named App1 and deploy App1 to an Azure container instance named ACI1.You need to restart ACI1 when App1 stops responding.What should you do?",
+        "answers": [
+          "A. Add a liveness probe to the YAML configuration of App1.",
+          "B. Add a readiness probe to the YAML configuration of App1.",
+          "C. Use Connection Monitor in Azure Network Watcher.",
+          "D. Use IP flow verify in Azure Network Watcher."
+        ],
+        "explanation": "https://docs.microsoft.com/en-us/azure/container-instances/container-instances-liveness-probe"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "You have an Azure DevOps organization named Contoso and an Azure subscription.You use Azure DevOps to build a containerized app named App1 and deploy App1 to an Azure container instance named ACI1.You need to restart ACI1 when App1 stops responding.What should you do?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 53175196,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "Your company uses Azure DevOps to manage the build and release processes for applications.You use a Git repository for applications source control.You plan to create a new branch from an existing pull request. Later, you plan to merge the new branch and the target branch of the pull request.You need to use a pull request action to create the new branch. The solution must ensure that the branch uses only a portion of the code in the pull request.Which pull request action should you use?",
+        "answers": [
+          "A. Set as default branch",
+          "B. Approve with suggestions",
+          "C. Cherry-pick",
+          "D. Reactivate",
+          "E. Revert"
+        ],
+        "explanation": "Cherry-pick a pull request -\nTo copy changes made in a pull request to another branch in your repo, follow these steps:\n1. In a completed pull request, select Cherry-pick, or for an active pull request, select Cherry-pick from the ... menu. Cherry-picking a pull request in this way creates a new branch with the copied changes. Merge into a target branch in a second pull request.\n2. In Target branch, enter the branch you want to merge the copied changes.\n3. In Topic branch name, enter a new branch to contain the copied changes, then select Cherry-pick.\n4. Select Create pull request to merge the topic branch into the target branch to complete the cherry-pick.\nReference:\nhttps://docs.microsoft.com/en-us/azure/devops/repos/git/pull-requests"
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "No Knowledge Area",
+      "question_plain": "Your company uses Azure DevOps to manage the build and release processes for applications.You use a Git repository for applications source control.You plan to create a new branch from an existing pull request. Later, you plan to merge the new branch and the target branch of the pull request.You need to use a pull request action to create the new branch. The solution must ensure that the branch uses only a portion of the code in the pull request.Which pull request action should you use?",
+      "related_lectures": []
+    }
+  ]
+}

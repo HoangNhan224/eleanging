@@ -1,0 +1,651 @@
+{
+  "count": 24,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "_class": "assessment",
+      "id": 38605836,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "relatedLectureIds": "",
+        "question": "<p><strong>You integrate a cloud-hosted Jenkins server and a new Azure Dev Ops deployment. You need Azure Dev Ops to send a notification to Jenkins when a developer commits changes to a branch in Azure Repos.</strong></p><p><strong>Solution: You create an email subscription to an Azure DevOps notification. </strong></p><p><strong>Does this meet the goal?</strong></p>",
+        "answers": [
+          "<p>YES</p>",
+          "<p>NO</p>"
+        ],
+        "feedbacks": [
+          "",
+          ""
+        ],
+        "explanation": "<p>You can create a service hook for Azure DevOps Services and TFS with Jenkins. </p><p><strong>References:</strong></p><p>https://docs.microsoft.com/en-us/azure/devops/service-hooks/services/jenkins</p>"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "Azure Dev Ops deployment",
+      "question_plain": "You integrate a cloud-hosted Jenkins server and a new Azure Dev Ops deployment. You need Azure Dev Ops lo send a notification to Jenkins when a developer commits changes to a branch in Azure Repos.Solution: You create an email subscription to an Azure DevOps notification. Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38605848,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "feedbacks": [
+          "",
+          ""
+        ],
+        "answers": [
+          "<p>YES</p>",
+          "<p>NO</p>"
+        ],
+        "relatedLectureIds": "",
+        "explanation": "<p>You can create a service hook for Azure DevOps Services and TFS with Jenkins. </p><p><strong>References:</strong></p><p>https://docs.microsoft.com/en-us/azure/devops/service-hooks/services/jenkins</p>",
+        "question": "<p><strong>You integrate a cloud-hosted Jenkins server and a new Azure DevOps depsoyment. You need Azure DevOps to send a notification to Jenkins when a developer commits changes to a branch in Azure Repos.</strong></p><p><strong>Solution: You add a trigger to the build pipeline. </strong></p><p><strong>Does this meet the goal?</strong></p>"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "Azure Dev Ops deployment",
+      "question_plain": "You integrate a cloud-hosted Jenkins server and a new Azure DevOps depsoyment. You need Azure DevOps to send a notification to Jenkins when a developer commits changes to a branch in Azure Repos.Solution: You add a trigger to the build pipeline. Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606034,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "answers": [
+          "<p>Octopus</p>",
+          "<p>Bamboo</p>",
+          "<p>Microsoft Project</p>",
+          "<p>Slack</p>"
+        ],
+        "question": "<p><strong>Your company plans to use an agile approach to software development You need to recommend an application to provide communication between members of the development team who work in locations around the world. The</strong></p><p><strong>application must meet the following requirements:</strong></p><p><strong>--&gt; Provide the ability to isolate the members of efferent project teams into separate communication channels and to keep a history of the chats within those channels.</strong></p><p><strong>--&gt; Be available on Windows 10, Mac OS, iOS, and Android operating systems.</strong></p><p><strong>--&gt; Provide the ability to add external contractors and suppliers to projects.</strong></p><p><strong>--&gt; Integrate directly with Azure DevOps. </strong></p><p><strong>What should you recommend?</strong></p>",
+        "explanation": "<p>Slack is a popular team collaboration service that helps teams be more productive by keeping all communications in one place and easily searchable from virtually anywhere. All your messages, your files, and everything from Twitter, Dropbox, Google Docs, Azure DevOps, and more all together. Slack also has fully native apps for iOS and Android to give you the full functionality of Slack wherever you go. </p><p><strong>Integrated with Azure DevOps</strong></p><p>This integration keeps your team informed of activity happening in its Azure DevOps projects. With this integration, code check-ins, pull requests, work item updates, and build events show up directly in your team's Slack channel.</p><p>Note: Microsoft Teams would also be a correct answer, but it is not an option here. </p><p><strong>References:</strong></p><p>https://marketplace.visualstudio.com/items?itemName=ms-vsts.vss-services-slack</p>",
+        "relatedLectureIds": "",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "software development",
+      "question_plain": "Your company plans to use an agile approach to software development You need to recommend an application to provide communication between members of the development team who work in locations around the world. Theapplication must meet the following requirements:--&gt; Provide the ability to isolate the members of efferent project teams into separate communication channels and to keep a history of the chats within those channels.--&gt; Be available on Windows 10, Mac OS, iOS, and Android operating systems.--&gt; Provide the ability to add external contractors and suppliers to projects.--&gt; Integrate directly with Azure DevOps. What should you recommend?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606058,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "<p><strong>You have a brand policy in a project in Azure DevOps. The policy requires that code always builds successfully.</strong></p><p><strong>You need to ensure that a specific user can always merge change to the master branch, even if the code fails to compile. The solution must use the principle of least privilege.</strong></p><p><strong>What should you do?</strong></p>",
+        "explanation": "<p>In some cases, you need to bypass policy requirements so you can push changes to the branch directly or complete a pull request even if branch policies are not satisfied. For these situations, grant the desired permission from the previous list to a user or group. You can scope this permission to an entire project, a repo, or a single branch. Manage this permission along the with other Git permissions. </p><p><strong>References: </strong></p><p>https://docs.microsoft.com/en-us/azure/devops/repos/git/branchpolicies</p>",
+        "relatedLectureIds": "",
+        "answers": [
+          "<p>From the Security setting of the repository, modify the access control tor the user.</p>",
+          "<p>From the Security settings of the branch, modify the access control for the user.</p>",
+          "<p>Add the user to the Build Administrators group,</p>",
+          "<p>Add the user to the Project Administrators group</p>"
+        ],
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "Azure DevOps",
+      "question_plain": "You have a brand policy in a project in Azure DevOps. The policy requires that code always builds successfully.You need to ensure that a specific user can always merge change to the master branch, even if the code fails to compile. The solution must use the principle of least privilege.What should you do?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606186,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "relatedLectureIds": "",
+        "question": "<p><strong>You use Azure SQL Database Intelligent Insights and Azure Application Insights for monitoring.</strong></p><p><strong>You need to write ad-hoc Queries against the monitoring data. Which Query language should you use?</strong></p>",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answers": [
+          "<p>PL/pgSQL</p>",
+          "<p>Transact-SQL</p>",
+          "<p>Azure Log Analytics</p>",
+          "<p>PL/SQL</p>"
+        ],
+        "explanation": "<p>Data analysis in Azure SQL Analytics is based on Log Analytics language for your custom querying and reporting.</p><p><strong>References:</strong> </p><p>https://docs.microsoft.com/en-us/azure/azure-monitor/insights/azure-sql</p>"
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "Azure Application",
+      "question_plain": "You use Azure SQL Database Intelligent Insights and Azure Application Insights foe monitoring.You need to write ad-hoc Queries against the monitoring data. Which Query language should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606440,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "explanation": "<p>Azure Platform as a Service (PaaS) resources, like Azure SQL and Web Sites (Web Apps), can emit performance metrics data natively to Log Analytics.</p><p>The Premium plan will retain up to 12 months of data, giving you an excellent baseline ability.</p><p>There are two options available in the Azure portal for analyzing data stored in Log analytics and for creating queries for ad hoc analysis.</p><p><strong>References: </strong></p><p>https://docs.microsoft.com/en-us/azure/azure-monitor/platform/collectazurepass- posh</p>",
+        "question": "<p><strong>You have multi-tier application that h. an Azure Web Apps front end and art Azure SQL Datable back end.</strong></p><p><strong>You need to recommend a solution to capture and store telemetry data</strong></p><p><strong>The solution must meet the following requirements:</strong></p><p><strong>--&gt;&nbsp; Support using ad-hoc queries to identify baselines.</strong></p><p><strong>--&gt;&nbsp; Trigger alerts when metrics in the baseline are exceeded.</strong></p><p><strong>--&gt;&nbsp; Store application and database metrics in a central location</strong></p><p><strong>What should you include in the recommendation?</strong></p>",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "relatedLectureIds": "",
+        "answers": [
+          "<p>Azure Application Insights</p>",
+          "<p>Azure SQL Database Intelligent Insights</p>",
+          "<p>Azure Event Hubs</p>",
+          "<p>Azure Log Analytics</p>"
+        ]
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "Azure Platform as a Service",
+      "question_plain": "You have multi-tier application that h. an Azure Web Apps front end and art Azure SQL Datable back end.You need to recommend a solution to capture and store telemetry dataThe solution must meet the following requirements:--&gt;&nbsp; Support using ad-hoc queries to identify baselines.--&gt;&nbsp; Trigger alerts when metrics in the baseline are exceeded.--&gt;&nbsp; Store application and database metrics in a central locationWhat should you include in the recommendation?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606466,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "<p><strong>Your company has a project in Azure DevOps for a new web application. You need to ensure that when code is checked in, a build runs automatically.</strong></p><p><strong>Solution: From the Pre-deployment conditions settings of the release pipeline, you select Batch changes while a build is in progress.</strong></p><p><strong>Does this meet the goal?</strong></p>",
+        "relatedLectureIds": "",
+        "feedbacks": [
+          "",
+          ""
+        ],
+        "answers": [
+          "<p>YES</p>",
+          "<p>NO</p>"
+        ],
+        "explanation": "<p>Use a Pull request trigger. </p><p>Note: Batch changes Select this check box if you have a lot of team members uploading changes often and you want to reduce the number of builds you are running. If you select this option, when a build is running, the system waits until the build is completed and then queues another build of all changes that have not yet been built.</p><p><strong>References:</strong> </p><p>https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers</p>"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "Azure DevOps",
+      "question_plain": "Your company has a project in Azure DevOps for a new web application. You need to ensure that when code is checked in, a build runs automatically.Solution: From the Pre-deployment conditions settings of the release pipeline, you select Batch changes while a build is in progress.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606474,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "question": "<p><strong>You have a GitHub repository.</strong></p><p><strong>You create a new repository in Azure DevOps.</strong></p><p><strong>You need to recommend a procedure to clone the repository from GitHub to Azure DevOps.</strong></p><p><strong>What should you recommend?</strong></p>",
+        "answers": [
+          "<p>Create a webhook.</p>",
+          "<p>Create a service connection for GitHub.</p>",
+          "<p>From Import a Git repository, click Import</p>",
+          "<p>Create a pull request.</p>"
+        ],
+        "relatedLectureIds": ""
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "GitHub repository",
+      "question_plain": "You have a GitHub repository.You create a new repository in Azure DevOps.You need to recommend a procedure to clone the repository from GitHub to Azure DevOps.What should you recommend?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606490,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "question": "<p><strong>You add the virtual machines as managed nodes in Azure Automation State Configuration.</strong></p><p><strong>You need to configure the computer in Group7. </strong></p><p><strong>What should you do?</strong></p>",
+        "answers": [
+          "<p>Run the Register-AzureRmAutomationDscNode Azure Powershell cmdlet.</p>",
+          "<p>Modify the ConfigurationMode property of the Local Configuration Manager (LCM).</p>",
+          "<p>Install PowerShell Core.</p>",
+          "<p>Modify the RefreshMode property of the Local Configuration Manager (LCM).</p>"
+        ],
+        "relatedLectureIds": "",
+        "explanation": "<p><strong>References</strong>: </p><p>https://docs.microsoft.com/enus/ powershell/module/azurerm.automation/register-azurermautomation</p>"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "Azure Automation State Configuration",
+      "question_plain": "You add the virtual machines as managed nodes in Azure Automation State Configuration.You need to configure the computer in Group7. What should you do?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606498,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "relatedLectureIds": "",
+        "explanation": "<p>When a release is created from a release pipeline that defines approvals, the deployment stops at each point where approval is required until the specified approver grants approval or rejects the release (or re-assigns the approval to another user).</p><p>Scenario: Code quality and release quality are critical. During release, deployments must not proceed between stages if any active bugs are logged against the release. </p><p><strong>References:</strong> </p><p>https://docs.microsoft.com/enus/ azure/devops/pipelines/release/approvals/approvals</p>",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answers": [
+          "<p>a trigger</p>",
+          "<p>a pre deployment approval</p>",
+          "<p>a post-deployment approval</p>",
+          "<p>a deployment gate</p>"
+        ],
+        "question": "<p><strong>What should you use to implement the code quality restriction on the release pipeline for the investment planning applications suite?</strong></p>"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "code quality restriction",
+      "question_plain": "What should you use to implement the code quality restriction on the release pipeline for the investment planning applications suite?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606510,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "relatedLectureIds": "",
+        "question": "<p><strong>You need to recommend a Docker container build strategy that meets the following requirements</strong></p><p><strong>--&gt;&nbsp; Minimizes image sizes</strong></p><p><strong>--&gt;&nbsp; Minimizes the security surface area of the final image </strong></p><p><strong>What should you include m the recommendation?</strong></p>",
+        "answers": [
+          "<p>multi-stage builds</p>",
+          "<p>single-stage builds</p>",
+          "<p>PowerShell Desired State Configuration (DSC)</p>",
+          "<p>Docker Swarm</p>"
+        ],
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "explanation": "<p>Multi-stage builds are a new feature requiring Docker 17.05 or higher on the daemon and client. Multistage builds are useful to anyone who has struggled to optimize Dockerfiles while keeping them easy to read and maintain. </p><p><strong>References:</strong> </p><p>https://docs.docker.com/develop/develop-images/multistage-build/</p>"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "Docker container build strategy",
+      "question_plain": "You need to recommend a Docker container build strategy that meets the following requirements--&gt;&nbsp; Minimizes image sues--&gt;&nbsp; Minimizes the security surface area of the final image What should you include m the recommendation?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606764,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "<p><strong>You plan to share packages that you wrote, tested, validated, and deployed by using Azure Artifacts.</strong></p><p><strong>You need to release multiple builds of each package by using a single feed. The solution must limit the release of packages that are in development.</strong></p><p><strong>What should you use?</strong></p>",
+        "relatedLectureIds": "",
+        "answers": [
+          "<p>global symbols</p>",
+          "<p>local symbols</p>",
+          "<p>upstream sources</p>",
+          "<p>views</p>"
+        ],
+        "explanation": "<p>Upstream sources enable you to manage all of your product's dependencies in a single feed. We recommend publishing all of the packages for a given product to that product's feed, and managing that product's dependencies from remote feeds in the same feed, via upstream sources. </p><p><strong>This setup has a few benefits:</strong></p><p>--&gt; Simplicity: your NuGet.config, .npmrc, or settings.xml contains exactly one feed (your feed).</p><p>--&gt; Determinism: your feed resolves package requests in order, so rebuilding the same codebase at the same commit or changeset uses the same set of packages</p><p>--&gt; Provenance: your feed knows the provenance of packages it saved via upstream sources, so you can verify that you're using the original package, not a custom or malicious copy published to your feed</p><p>--&gt; Peace of mind: packages used via upstream sources are guaranteed to be saved in the feed on first use; if the upstream source is disabled/removed, or the remote feed goes down or deletes a package you depend on, you can continue to develop and build</p><p><strong>References: </strong></p><p>https://docs.microsoft.com/enus/ azure/devops/artifacts/concepts/upstream-sources?view=vsts</p>",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "Azure Artifacts",
+      "question_plain": "You plan to share packages that you wrote, tested, validated, and deployed by using Azure Artifacts.You need to release multiple builds of each package by using a single feed. The solution must limit the release of packages that are in development.What should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606796,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "relatedLectureIds": "",
+        "explanation": "<p>WhiteSource is the leader in continuous open source software security and compliance management. WhiteSource integrates into your build process, irrespective of your programming languages, build tools, or development environments. It works automatically, continuously, and silently in the background, checking the security, licensing, and quality of your open source components against WhiteSource constantly-updated definitive database of open source repositories. </p><p><strong>Azure DevOps integration with WhiteSource Bolt will enable you to:</strong></p><p>--&gt; Detect and remedy vulnerable open source components.</p><p>--&gt; Generate comprehensive open source inventory reports per project or build.</p><p>--&gt; Enforce open source license compliance, including dependencies¡¦ licenses.</p><p>--&gt; Identify outdated open source libraries with recommendations to update. </p><p><strong>References:</strong> </p><p>https://www.azuredevopslabs.com/labs/vstsextend/WhiteSource/</p>",
+        "question": "<p><strong>Your company is concerned that when developers introduce open source libraries, it creates licensing compliance issues.</strong></p><p><strong>You need to add an automated process to the build pipeline to detect when common open source libraries are added to the code base.</strong></p><p><strong>What should you use?</strong></p>",
+        "answers": [
+          "<p>Microsoft Visual SourceSafe</p>",
+          "<p>PDM</p>",
+          "<p>WhiteSource</p>",
+          "<p>OWASP ZAP</p>"
+        ]
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "WhiteSource",
+      "question_plain": "Your company is concerned that when developers introduce open source libraries, it creates licensing compliance issues.You need to add an automated process to the build pipeline to detect when common open source libraries are added to the code base.What should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606824,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "<p><strong>Your company is building a mobile app that targets Android devices and iOS devices. Your team uses Azure DevOps to manage all work items and release cycles.</strong></p><p><strong>You need to recommend a solution to perform the following tasks</strong></p><p><strong>--&gt;&nbsp; Collect crash reports for issue analysis</strong></p><p><strong>--&gt;&nbsp; Distribute beta releases to your testers.</strong></p><p><strong>--&gt;&nbsp; Get user feedback on the functionality of new apps. </strong></p><p><strong>What should you include in the recommendation?</strong></p>",
+        "relatedLectureIds": "",
+        "answers": [
+          "<p>Jenkins integration</p>",
+          "<p>Azure Application Insights widgets</p>",
+          "<p>the Microsoft Test &amp; Feedback extension</p>",
+          "<p>Microsoft Visual Studio App Center integration</p>"
+        ],
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "Azure DevOps",
+      "question_plain": "Your company is building a mobile app that targets Android devices and OS devices. Your team uses Azure DevOps to manage all work items and release cycles.You need to recommend a solution to perform the following tasks--&gt;&nbsp; Collect crash reports for issue analysis--&gt;&nbsp; Distribute beta releases to your testers.--&gt;&nbsp; Get user feedback on the functionality of new apps. What should you include in the recommendation?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606850,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "feedbacks": [
+          "",
+          ""
+        ],
+        "explanation": "<p>Use a gate From Pre-deployment conditions instead. </p><p><strong>References: </strong></p><p>https://docs.microsoft.com/enus/ azure/devops/pipelines/release/approvals/gates</p>",
+        "relatedLectureIds": "",
+        "question": "<p><strong>You have an approval process that contains a condition. The condition requires that releases be approved by a team leader before they are deployed.</strong></p><p><strong>You have a poky stating that approvals must occur within eight hour.</strong></p><p><strong>You discover that deployments fail if the approvals take longer than two hours. You need to ensure that the deployments only fail if the approvals take longer than eight hours.</strong></p><p><strong>Solution: From Post-deployment conditions, you modify the Time between reevaluation of gates option.</strong></p><p><strong>Does this meet the goal?</strong></p>",
+        "answers": [
+          "<p>YES</p>",
+          "<p>NO</p>"
+        ]
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "Azure DevOps",
+      "question_plain": "You have an approval process that contains a condition. The condition requires that releases be approved by a team leader before they are deployed.You have a poky stating that approvals must occur within eight hour.You discover that deployments fail if the approvals take longer than two hours. You need to ensure that the deployments only fail if the approvals take longer than eight hours.Solution: From Post-deployment conditions, you modify the Time between reevaluation of gates option.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606870,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "relatedLectureIds": "",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "explanation": "<p>You can use the Azure DevTest Labs Tasks extension that's installed in Azure DevOps to easily integrate your CI/CD build-and-release pipeline with Azure DevTest Labs. <strong>The extension installs three tasks:</strong></p><p>--&gt; Create a VM</p><p>--&gt; Create a custom image from a VM</p><p>--&gt; Delete a VM</p><p>The process makes it easy to, for example, quickly deploy a \"golden image\" for a specific test task and then delete it when the test is finished.</p><p><strong>References: </strong></p><p>https://docs.microsoft.com/en-us/azure/lab-services/devtest-labintegrate- ci-cd-vsts</p>",
+        "question": "<p><strong>Your company builds a multi tier web application. You use Azure DevOps and host the production application on Azure virtual machines. Your team prepares an Azure Resource Manager template of the virtual machine that you mil use to test new features.</strong></p><p><strong>You need to create a staging environment in Azure that meets the following requirements:</strong></p><p><strong>--&gt;&nbsp; Minimizes the cost of Azure hosting</strong></p><p><strong>--&gt;&nbsp; Provisions the virtual machines automatically</strong></p><p><strong>--&gt;&nbsp; Use the custom Azure Resource Manager template to provision the virtual machines</strong></p><p><strong>What should you do?</strong></p>",
+        "answers": [
+          "<p>In Azure DevOps, configure new tasks in the release pipeline to create and delete the virtual machines m Azure DevTest Labs.</p>",
+          "<p>From Azure Cloud Shell, run Azure PowerShell commands to create and delete the new virtual machines in a staging resource group.</p>",
+          "<p>In Azure DevOps, configure new tasks in the release pipeline to deploy to Azure Cloud Services.</p>",
+          "<p>In Azure Cloud Shell, run Azure CLI commands to create and delete the new virtual machines in a staging resource group.</p>"
+        ]
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "Azure Resource Manager template",
+      "question_plain": "Your company builds a multi tier web application. You use Azure DevOps and host the production application on Azure virtual machines. Your team prepares an Azure Resource Manager template of the virtual machine that you mil use to test new features.You need to create a staging environment in Azure that meets the following requirements:--&gt;&nbsp; Minimizes the cost of Azure hosting--&gt;&nbsp; Provisions the virtual machines automatically--&gt;&nbsp; Use the custom Azure Resource Manager template to provision the virtual machinesWhat should you do?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38606888,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "<p><strong>You are developing a multi-tier application. The application will use Azure App Service web apps as the front end and an Azure SQL database as the back end.</strong></p><p><strong>The application will use Azure functions to write some data to Azure Storage. You need to send the Azure DevOps team an email message when the front end fails to return a status code of 200.</strong></p><p><strong>Which feature should you use?</strong></p>",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "relatedLectureIds": "",
+        "explanation": "<p>Application Map helps you spot performance bottlenecks or failure hotspots across all components of your distributed application. Each node on the map represents an application component or its dependencies; and has health KPI and alerts status. </p><p><strong>References: </strong></p><p>https://docs.microsoft.com/en-us/azure/azuremonitor/app/app-map</p>",
+        "answers": [
+          "<p>Service Map in Azure Log Analytics</p>",
+          "<p>Profiler in Azure Application Insights</p>",
+          "<p>availability tests in Azure Application Insights</p>",
+          "<p>Application Map in Azure Application Insights</p>"
+        ]
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "Azure App Service web apps",
+      "question_plain": "You are developing a multi-tier application. The application will use Azure App Service web apps as the front end and an Azure SQL database as the back end.The application will use Azure functions to write some data to Azure Storage. You need to send the Azure DevOps team an email message when the front end fails to return a status code of 200.Which feature should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38607192,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "relatedLectureIds": "",
+        "answers": [
+          "<p>.cer</p>",
+          "<p>.pvk</p>",
+          "<p>.pfx</p>",
+          "<p>.p12</p>"
+        ],
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "question": "<p><strong>Your company develops an app for OS. All users of the app have devices that are members of a private distribution group in Microsoft Visual Studio App Center.</strong></p><p><strong>You plan to distribute a new release of the app.</strong></p><p><strong>You need to identify which certificate file you require to distribute the new release from App Center.</strong></p><p><strong>Which file type should you upload to App Center?</strong></p>"
+      },
+      "correct_response": [
+        "d"
+      ],
+      "section": "Microsoft Visual Studio App Center",
+      "question_plain": "Your company develops an app for OS. All users of the app have devices that are members of a private distribution group in Microsoft Visual Studio App Center.You plan to distribute a new release of the app.You need to identify which certificate file you require to distribute the new release from App Center.Which file type should you upload to App Center?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38607210,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "relatedLectureIds": "",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "explanation": "<p>The first thing to do is to declare your SonarQube server as a service endpoint in your VSTS/DevOps project settings.</p><p><strong>References:</strong> </p><p>https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Extension+fo r+vsts-TFS</p>",
+        "question": "<p><strong>In Azure DevOps, you create Project3.</strong></p><p><strong>You need to meet the requirements of the project. What should you do first?</strong></p>",
+        "answers": [
+          "<p>From Azure DevOps, create a service endpoint.</p>",
+          "<p>From SonarQube, obtain an authentication token.</p>",
+          "<p>From Azure DevOps, modify the build definition.</p>",
+          "<p>From SonarQube, create a project</p>"
+        ]
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "Azure DevOps",
+      "question_plain": "In Azure DevOps, you create Project3.You need to meet the requirements of the project. What should you do first?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38607234,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "answers": [
+          "<p>Cobertura</p>",
+          "<p>Bullseye Coverage</p>",
+          "<p>MSTest</p>",
+          "<p>Coverlet</p>"
+        ],
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "relatedLectureIds": "",
+        "question": "<p><strong>You are automating the build process for a Java-based application by using Azure DevOps.</strong></p><p><strong>You need to add code coverage testing and publish the outcomes to the pipeline. What should you use?</strong></p>",
+        "explanation": "<p>Use Publish Code Coverage Results task in a build pipeline to publish code coverage results to Azure Pipelines or TFS, which were produced by a build in Cobertura or JaCoCo format.</p><p><strong>References</strong>: </p><p>https://docs.microsoft.com/enus/azure/devops/pipelines/tasks/test/publish-code-coverage-results</p>"
+      },
+      "correct_response": [
+        "a"
+      ],
+      "section": "Azure DevOps",
+      "question_plain": "You are automating the build process for a Java-based application by using Azure DevOps.You need to add code coverage testing and publish the outcomes to the pipeline. What should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38607248,
+      "assessment_type": "multi-select",
+      "prompt": {
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answers": [
+          "<p>Integrate Azure DevOps and SonarQube.</p>",
+          "<p>Integrates Azure DevOPs and Azure DevTest Labs.</p>",
+          "<p>Configure post-deployment approvals in the deployment pipeline.</p>",
+          "<p>Configure pre-deployment approvals in the deployment pipeline</p>"
+        ],
+        "question": "<p><strong>Your company uses Azure DevOps for the build pipelines and deployment pipelines of Java based projects. You need to recommend a strategy for managing technical debt.</strong></p><p><strong>Which two actions should you include in the recommendation? Each correct answer presents part of the solution</strong></p>",
+        "relatedLectureIds": ""
+      },
+      "correct_response": [
+        "a",
+        "c"
+      ],
+      "section": "pipelines of Java based projects",
+      "question_plain": "Your company uses Azure DevOps for the build pipelines and deployment pipelines of Java based projects. You need to recommend a strategy for managing technical debt.Which two actions should you include in the recommendation? Each correct answer presents part of the solution",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38607302,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "<p><strong>Your company concerned that when developers introduce open source Libraries, it creates licensing compliance issues.</strong></p><p><strong>You need to add an automated process to the build pipeline to detect when common open source libraries are added to the code base.</strong></p><p><strong>What should you use?</strong></p>",
+        "explanation": "<p>Secure and Manage Open Source Software Black Duck helps organizations identify and mitigate open source security, license compliance and code-quality risks across application and container portfolios.</p><p>Black Duck Hub and its plugin for Team Foundation Server (TFS) allows you to automatically find and fix open source security vulnerabilities during the build process, so you can proactively manage risk. The integration allows you to receive alerts and fail builds when any Black Duck Hub policy violations are met.</p><p>Note: WhiteSource would also be a good answer, but it is not an option here. </p><p><strong>References:</strong></p><p>https://marketplace.visualstudio.com/items?itemName=black-duck-software.hub-tfs</p>",
+        "feedbacks": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answers": [
+          "<p>Code Style</p>",
+          "<p>Microsoft Visual SourceSafe</p>",
+          "<p>Black Duck</p>",
+          "<p>Jenkins</p>"
+        ],
+        "relatedLectureIds": ""
+      },
+      "correct_response": [
+        "c"
+      ],
+      "section": "Black Duck",
+      "question_plain": "Your company concerned that when developers introduce open source Libraries, it creates licensing compliance issues.You need to add an automated process to the build pipeline to detect when common open source libraries are added to the code base.What should you use?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38607344,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "question": "<p><strong>Your company has a project in Azure DevOps for a new web application. You need to ensure that when code is checked in, a build runs automatically.</strong></p><p><strong>Solution: From the Pre-deployment conditions settings of the release pipeline, you select After stage.</strong></p><p><strong>Does this meet the goal?</strong></p>",
+        "answers": [
+          "<p>YES</p>",
+          "<p>NO</p>"
+        ],
+        "explanation": "<p>Instead, In Visual Designer you enable continuous integration (CI) by:</p><p>--&gt; Select the Triggers tab.</p><p>--&gt; Enable Continuous integration. </p><p><strong>References:</strong></p><p>https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-designer</p>",
+        "relatedLectureIds": "",
+        "feedbacks": [
+          "",
+          ""
+        ]
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "Visual Designer",
+      "question_plain": "Your company has a project in Azure DevOps for a new web application. You need to ensure that when code is checked in, a build runs automatically.Solution: From the Pre-deployment conditions settings of the release pipeline, you select After stage.Does this meet the goal?",
+      "related_lectures": []
+    },
+    {
+      "_class": "assessment",
+      "id": 38607374,
+      "assessment_type": "multiple-choice",
+      "prompt": {
+        "feedbacks": [
+          "",
+          ""
+        ],
+        "relatedLectureIds": "",
+        "answers": [
+          "<p>YES</p>",
+          "<p>NO</p>"
+        ],
+        "question": "<p><strong>You have an approval process that contains a condition. The condition requires that releases be approved by a team leader before they are deployed.</strong></p><p><strong>You haw a pokey stating that approvals must occur within eight hours.</strong></p><p><strong>You discover that deployments only if the approvals take longer than two hours. You need to ensure that the deployments only fail if the approvals take longer than hours.</strong></p><p><strong>Solution From Post -deployment conditions, you modify the Timeout setting for post-deployment approvals.</strong></p><p><strong>Does this meet the goal?</strong></p>"
+      },
+      "correct_response": [
+        "b"
+      ],
+      "section": "Azure DevOps",
+      "question_plain": "You have an approval process that contains a condition. The condition requires that releases be approved by a team leader before they are deployed.You haw a pokey stating that approvals must occur within eight hours.You discover that deployments only if the approvals take longer than two hours. You need to ensure that the deployments only fail if the approvals take longer than hours.Solution From Post -deployment conditions, you modify the Timeout setting for post-deployment approvals.Does this meet the goal?",
+      "related_lectures": []
+    }
+  ]
+}

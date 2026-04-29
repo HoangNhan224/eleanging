@@ -1,0 +1,27 @@
+version: '3.8'
+
+volumes:
+  ps_mysql_data:
+
+networks:
+  ps_network:
+    driver: bridge
+
+services:
+  ps_server:
+    depends_on:
+      - ps_mysql
+    image: ps_server
+    container_name: ps_server
+    stdin_open: true
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    restart: unless-stopped
+    volumes:
+      - '/app/node_modules'
+      - './:/app'
+    networks:
+      - ps_network

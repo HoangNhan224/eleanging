@@ -1,0 +1,156 @@
+{
+  "id": "15222017-320c-41ba-b686-4d5f5d90907d",
+  "version": "2.0",
+  "name": "TestUncomplete",
+  "url": "http://172.16.0.36/login",
+  "tests": [{
+    "id": "141fe624-efd6-4904-bb28-aa78928c3cc9",
+    "name": "Test1",
+    "commands": [{
+      "id": "1b02c9f9-5fea-46f9-af1f-2fbb03710203",
+      "comment": "",
+      "command": "open",
+      "target": "http://172.16.0.36/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "048719a6-1ec5-464f-9982-c38ce3b55311",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "729b73aa-238a-4462-b682-a12f8ad38724",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.Mui-focused > .MuiInputBase-input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f69dbb2-e1c9-4a75-b016-384a9ff80219",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.Mui-focused > .MuiInputBase-input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "An"
+    }, {
+      "id": "5c81f505-a1da-46f8-bb2f-ae37be260adb",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[2]/div/input",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.Mui-focused > .MuiInputBase-input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "95090a69-a17b-4b74-9261-6fb5a9326477",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.Mui-focused > .MuiInputBase-input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "451fccc9-625a-43fc-b382-a8cf43d322c6",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//form/button",
+      "targets": [
+        ["css=.sc-eDWCr", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng nhập')]", "xpath:innerText"]
+      ],
+      "value": "2000"
+    }, {
+      "id": "292d25cb-2345-4a05-9a65-a80d7f740e5f",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[2]/div[4]/div/p",
+      "targets": [
+        ["css=.sc-dmctIk:nth-child(2) > p", "css:finder"],
+        ["xpath=//div[@id='root']/main/div/div[2]/div[2]/div[4]/div/p", "xpath:idRelative"],
+        ["xpath=//div[2]/div[4]/div/p", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2ee74279-6813-45db-923d-d6a557778709",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[4]/button",
+      "targets": [
+        ["css=.sc-iJnaPW", "css:finder"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Bắt đầu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d8938054-cbe1-4fc7-b57c-3462c0be484d",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[44]/div/button",
+      "targets": [
+        ["css=.sc-fbYMXx", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/main/form/div[44]/div/button", "xpath:idRelative"],
+        ["xpath=//div[44]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Nộp bài')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad7bd383-8377-417a-8138-eb728910002a",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[4]/button",
+      "targets": [
+        ["css=.sc-fbYMXx", "css:finder"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "18086dd6-19d4-4e2f-8847-3cd6a9af51a7",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.sc-cwSeag",
+      "targets": [
+        ["css=.sc-cwSeag", "css:finder"],
+        ["xpath=//div[3]/div/div[3]", "xpath:position"]
+      ],
+      "value": "Bạn chưa điền đủ tất cả các câu hỏi"
+    }]
+  }],
+  "suites": [{
+    "id": "c16449f5-9e1f-4f42-841d-9ea7b626071d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://172.16.0.36/login"],
+  "plugins": []
+}
