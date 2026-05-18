@@ -11,7 +11,7 @@ const fs = require('fs')
 const router = express.Router()
 const { infoLogger, errorLogger } = require('../logs/logger')
 const { broadcastRoleChangeWS, broadcastNewNotification } = require('../socket')
-
+const { UniqueConstraintError } = require('sequelize')
 const MASSAGE = {
   USER_NOT_FOUND: 'User not found',
   NO_CREATE_USER: 'No can not create user',
@@ -196,41 +196,81 @@ function getDataInWindowSize (size, page, data) {
  * @returns {Promise<Object>} The created user object.
  * @throws {Error} If there is an error creating the user.
  */
-router.post('/', isAuthenticated, checkUserPermission, async (req, res) => {
-  try {
-    const { username, password, roleId } = req.body.data
-    // TODO Check if username, password, and roleId are provided
-    if (!username || !password || !roleId) {
-      logError(req, MASSAGE.REQUIRED)
-      return res.status(400).json({ message: MASSAGE.REQUIRED })
-    }
-    // TODO Check if the username already exists
-    const user = await models.User.findOne({
-      where: { username }
-    })
 
-    if (user) {
-      logError(req, MASSAGE.USERNAME_ALREADY_EXISTS)
-      return res.status(400).json({ message: MASSAGE.USERNAME_ALREADY_EXISTS })
-    } else {
-      // TODO Hash the password
-      const hashPassword = bcrypt.hashSync(password, SALT_KEY)
-      const newUser = {
-        username,
-        password: hashPassword,
-        roleId
-      }
-      // TODO Create the new user
-      const createdUser = await models.User.create(newUser)
-      if (!createdUser) {
-        logError(req, MASSAGE.NO_CREATE_USER)
-        return res.status(400).json({ message: MASSAGE.NO_CREATE_USER })
-      }
-      logInfo(req, createdUser)
-      res.json(createdUser)
+router.post('/', isAuthenticated, checkUserPermission, async (req, res) => {
+  logInfo(req, 'CREATE USER - Request received', { body: req.body }) // ✅ logInfo đầu vào
+
+  try {
+    const body = req.body.data || req.body
+    const { username, roleId, email, firstName, lastName, groupId } = body
+
+    if (!username || !roleId || !email || !firstName || !lastName || !groupId) {
+      logInfo(req, 'CREATE USER - Missing fields', { body }) // ✅ logInfo missing
+      return res.status(400).json({
+        code: 'MISSING_FIELDS',
+        message: 'Required fields missing'
+      })
     }
+
+    const existedUser = await models.User.findOne({ where: { username } })
+    if (existedUser) {
+      logInfo(req, 'CREATE USER - Username already exists', { username }) // ✅ logInfo trùng username
+      return res.status(400).json({
+        code: 'USERNAME_ALREADY_EXISTS',
+        message: MASSAGE.USERNAME_ALREADY_EXISTS
+      })
+    }
+
+    const existedEmail = await models.User.findOne({ where: { email } })
+    if (existedEmail) {
+      logInfo(req, 'CREATE USER - Email already exists', { email }) // ✅ logInfo trùng email
+      return res.status(409).json({
+        code: 'EMAIL_ALREADY_EXISTS',
+        message: 'Email already exists'
+      })
+    }
+    // Tự generate password ngẫu nhiên 8 ký tự
+    const generateRandomPassword = () => {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$!'
+      return Array.from({ length: 8 }, () =>
+        chars[Math.floor(Math.random() * chars.length)]
+      ).join('')
+    }
+
+    const rawPassword = generateRandomPassword()
+
+    // Hash password trước khi lưu DB
+    const hashPassword = bcrypt.hashSync(rawPassword, SALT_KEY)
+
+    // Tạo user
+    const newUser = await models.User.create({
+      username,
+      password: hashPassword,
+      roleId: Number(roleId),
+      email,
+      firstName,
+      lastName,
+      groupId: Number(groupId)
+    })
+    logInfo(req, 'CREATE USER - Success', { userId: newUser.id, username }) // ✅ logInfo thành công
+    // Trả về kèm rawPassword để admin thông báo cho user
+    return res.status(200).json({
+      ...newUser.toJSON(),
+      tempPassword: rawPassword
+    })
   } catch (error) {
-    res.json({ error })
+    if (error instanceof UniqueConstraintError) {
+      logError(req, MASSAGE.EMAIL_ALREADY_EXISTS)// ✅ logError constraint
+      return res.status(409).json({
+        code: 'EMAIL_ALREADY_EXISTS',
+        message: 'Email already exists'
+      })
+    }
+
+    logError(req, MASSAGE.NO_CREATE_USER)// ✅ logError unexpected
+    return res.status(500).json({
+      message: MASSAGE.NO_CREATE_USER
+    })
   }
 })
 

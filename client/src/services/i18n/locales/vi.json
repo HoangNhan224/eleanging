@@ -308,6 +308,18 @@
       "confirm_delete": "Xác nhận xóa",
       "confirm_delete_single": "Bạn có chắc chắn muốn xóa người dùng \"{{name}}\" không?",
       "confirm_delete_multiple": "Bạn có chắc chắn muốn xóa {{count}} người dùng đã chọn không?",
+      "Addnewuser": "Thêm người dùng mới",
+      "validation": {
+        "emailRequired": "Email không được để trống",
+        "emailInvalid": "Email không hợp lệ",
+        "usernameRequired": "Tên đăng nhập không được để trống",
+        "usernameMinLength": "Tối thiểu 3 ký tự",
+        "usernamePattern": "Chỉ gồm chữ thường, số và dấu _",
+        "firstNameRequired": "Tên không được để trống",
+        "lastNameRequired": "Họ không được để trống",
+        "groupRequired": "Vui lòng chọn nhóm",
+        "roleRequired": "Vui lòng chọn vai trò"
+      },
       "toast": {
         "noRowSelected": "Vui lòng chọn dòng để thực hiện",
         "deleteSuccessfully": "Xóa thành công",
@@ -319,7 +331,13 @@
         "cannotDeleteAdmin": "Không thể xóa quản trị viên",
         "cannotDeleteManagerOrAdmin": "Không thể xóa quản lý hoặc quản trị viên",
         "cannotDeleteSelected": "Không thể xóa các dòng đã chọn",
-        "noChangesMade": "Không có thay đổi nào được thực hiện"
+        "noChangesMade": "Không có thay đổi nào được thực hiện",
+        "tempPasswordLabel": "Mật khẩu tạm thời",
+        "clickToCopy": "Click 📋 để copy",
+        "userCreatedSuccessfully": "Tạo người dùng thành công",
+        "userCreationFailed": "Tạo người dùng thất bại",
+        "emailAlreadyExists": "Email đã được sử dụng",
+        "usernameAlreadyExists": "Tên đăng nhập đã tồn tại"
       }
     },
     "permissionpage": {
@@ -472,7 +490,9 @@
       "category_lesson": "Danh mục bài học",
       "course": "Khóa học",
       "banner": "Banner",
-      "progressDashboard": "Thống kê tiến độ học"
+      "progressDashboard": "Thống kê tiến độ học",
+      "group_management": "Quản lý nhóm"
+      
     },
     "progress_dashboard": {
       "title": "Thống kê tiến độ học tập",
@@ -702,6 +722,37 @@
         "otp_has_expired": "Mã OTP đã hết hạn",
         "otp_is_invalid": "Mã OTP không hợp lệ"
       }
+    },
+    "group_management": {
+      "title": "Quản lý nhóm",
+      "id": "ID",
+      "name": "Tên nhóm",
+      "description": "Mô tả",
+      "created_at": "Ngày tạo",
+      "updated_at": "Ngày cập nhật",
+      "add_group": "Thêm nhóm",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "stt": "STT",
+      "delete_selected": "Xóa các nhóm đã chọn",
+      "confirm_delete": "Xác nhận xóa",
+      "confirm_delete_desc": "Bạn có chắc chắn muốn xóa nhóm \"{{name}}\" không? Hành động này không thể hoàn tác.",
+      "confirm_bulk_delete": "Xác nhận xóa hàng loạt",
+      "confirm_bulk_delete_desc": "Bạn có chắc chắn muốn xóa {{count}} nhóm đã chọn không? Hành động này không thể hoàn tác.",
+      "add_title": "Thêm nhóm",
+      "name_required": "Tên nhóm là bắt buộc",
+      "name_exists": "Tên nhóm đã tồn tại",
+      "select_one": "Vui lòng chọn dòng để thực hiệ",
+      "fetch_failed": "Lấy danh sách nhóm thất bại",
+      "create_success": "Tạo nhóm thành công",
+      "update_success": "Cập nhật nhóm thành công",
+      "delete_success": "Xóa nhóm thành công",
+      "create_failed": "Tạo nhóm thất bại",
+      "update_failed": "Cập nhật nhóm thất bại",
+      "delete_failed": "Xóa nhóm thất bại",
+      "invalid_id": "ID nhóm không hợp lệ",
+      "groupMinLength": "Tên nhóm phải có ít nhất 1 ký tự",
+      "no_changes_detected": "Không có thay đổi nào được thực hiện"
     },
     "exam_admin": {
       "title": "Quản lý thi",

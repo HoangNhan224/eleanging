@@ -151,8 +151,12 @@ const TableUser = () => {
     const fetchGroups = async () => {
       try {
         const response = await getGroup()
-        const groups = response.data
-        setGroups(groups)
+        const groupsData = Array.isArray(response?.data?.data)
+          ? response.data.data
+          : Array.isArray(response?.data)
+            ? response.data
+            : []
+        setGroups(groupsData)
       } catch (error) {
         console.error('Failed to fetch groups:', error)
       }
@@ -168,11 +172,15 @@ const TableUser = () => {
    * @author Canh
    */
   useEffect(() => {
-    const fetchCoursesDoneByUsers = async () => {
-      setLoading(true)
-      try {
-        const response = await getCourseDoneDashboard({
+    let isMounted = true
 
+    const fetchCoursesDoneByUsers = async (): Promise<void> => {
+      try {
+        if (isMounted) {
+          setLoading(true)
+        }
+
+        const response = await getCourseDoneDashboard({
           params: {
             page: pagination.pageIndex + 1,
             size: pagination.pageSize,
@@ -181,16 +189,33 @@ const TableUser = () => {
             groupSearch: JSON.stringify(selectedGroups)
           }
         })
+
+        if (!isMounted) {
+          return
+        }
+
         setDataTable(response.data)
       } catch (e) {
         console.error(e)
       } finally {
-        setLoading(false)
+        if (isMounted) {
+          setLoading(false)
+        }
       }
     }
-    fetchCoursesDoneByUsers()
+
+    void fetchCoursesDoneByUsers()
+
     setIsFinding(false)
-  }, [pagination.pageIndex, pagination.pageSize, dataTable?.pageSize, isFinding])
+
+    return () => {
+      isMounted = false
+    }
+  }, [
+    pagination.pageIndex,
+    pagination.pageSize,
+    isFinding
+  ])
   /**
  * Defines table columns for displaying user data and completed courses.
  *

@@ -308,6 +308,18 @@
       "confirm_delete": "Confirm delete",
       "confirm_delete_single": "Are you sure you want to delete user \"{{name}}\"?",
       "confirm_delete_multiple": "Are you sure you want to delete {{count}} selected users?",
+      "Addnewuser": "Add new user",
+      "validation": {
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "usernameRequired": "Username is required",
+        "usernameMinLength": "At least 3 characters",
+        "usernamePattern": "Lowercase letters, numbers and _ only",
+        "firstNameRequired": "First name is required",
+        "lastNameRequired": "Last name is required",
+        "groupRequired": "Please select a group",
+        "roleRequired": "Please select a role"
+      },
       "toast": {
         "noRowSelected": "No row selected",
         "deleteSuccessfully": "Delete successfully",
@@ -319,7 +331,13 @@
         "cannotDeleteAdmin": "Cannot delete admin",
         "cannotDeleteManagerOrAdmin": "Cannot delete manager or admin",
         "cannotDeleteSelected": "Cannot delete selected",
-        "noChangesMade": "No changes made"
+        "noChangesMade": "No changes made",
+        "tempPasswordLabel": "Temporary password",
+        "clickToCopy": "Click 📋 to copy",
+        "userCreatedSuccessfully": "User created successfully",
+        "userCreationFailed": "User creation failed",
+        "emailAlreadyExists": "Email already exists",
+        "usernameAlreadyExists": "Username already exists"
       }
     },
     "permissionpage": {
@@ -472,7 +490,8 @@
       "questionBank": "Question Bank",
       "examManagement": "Exam Management",
       "progressDashboard": "Progress Statistics",
-      "banner": "Banner"
+      "banner": "Banner",
+      "group_management": "Group Management"
     },
     "progress_dashboard": {
       "title": "Learning Progress Statistics",
@@ -502,6 +521,37 @@
       "search_placeholder": "Search by name, email...",
       "all": "All",
       "fetch_error": "Failed to fetch data"
+    },
+    "group_management": {
+      "title": "Group Management",
+      "id":"ID",
+      "name": "Name",
+      "description": "Description",
+      "created_at": "Created At",
+      "updated_at": "Updated At",
+      "add_group": "Add group",
+      "edit": "Edit",
+      "delete": "Delete",
+      "stt": "No.",
+      "delete_selected": "Delete selected groups",
+      "confirm_delete": "Confirm delete",
+      "confirm_delete_desc": "Are you sure you want to delete group \"{{name}}\"? This action cannot be undone.",
+      "confirm_bulk_delete": "Confirm bulk delete",
+      "confirm_bulk_delete_desc": "Are you sure you want to delete {{count}} selected groups? This action cannot be undone.",
+      "add_title": "Add Group",
+      "name_required": "Group name is required",
+      "name_exists": "Group name already exists",
+      "select_one": "No row selected",
+      "fetch_failed": "Fetch groups failed",
+      "create_success": "Create group successfully",
+      "update_success": "Update group successfully",
+      "delete_success": "Delete group successfully",
+      "create_failed": "Create group failed",
+      "update_failed": "Update group failed",
+      "delete_failed": "Delete group failed",
+      "invalid_id": "Invalid group id",
+      "groupMinLength": "Group name must be at least 1 character",
+      "no_changes_detected": "No changes were made"
     },
     "mycourse": {
       "myCourse": "My Courses",

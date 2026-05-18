@@ -77,7 +77,7 @@ const Default = () => {
   const pathRegEx = /^\/lesson\/edit\/[^/]+$/
   const isPathMatch = pathRegEx.test(location.pathname)
   const isAdmin = userRoleFromRedux?.toUpperCase() === 'ADMIN'
-  const alwaysShowSidebarPaths = ['/permission', '/user', '/lesson', '/lesson/add', '/dashboard/enrollment_dashboard', '/categorycourse', '/course', '/categorylession', '/course/addcourse', `/course/editcourse/${id ?? ''}`, '/exam-management', '/question-bank', `/exam-management/edit/${id ?? ''}`, '/exam-management/add', '/banner', '/progress-dashboard']
+  const alwaysShowSidebarPaths = ['/permission', '/user', '/lesson', '/lesson/add', '/dashboard/enrollment_dashboard', '/categorycourse', '/group-management', '/course', '/categorylession', '/course/addcourse', `/course/editcourse/${id ?? ''}`, '/exam-management', '/question-bank', `/exam-management/edit/${id ?? ''}`, '/exam-management/add', '/banner', '/progress-dashboard']
   const showSidebar = (alwaysShowSidebarPaths.includes(location.pathname) && isAdmin) || (isPathMatch && isAdmin)
   const showFooter = !location.pathname.startsWith('/learning')
 

@@ -217,7 +217,52 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
                   </div>
                 </NavLink>
               </li>
-
+             {/* group management */}
+            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname === '/group-management' && 'bg-teal-300 text-blue-500'}`}>
+              <NavLink
+                end
+                to="/group-management"
+                className={`block ${pathname === '/group-management' ? 'text-white' : 'text-gray-500'} hover:text-neutral-400 truncate transition duration-150 ${pathname === '/group-management' && 'hover:text-slate-200'}`}
+              >
+                <div className="flex items-center">
+                  <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                      stroke="#6b7280"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <circle
+                      cx="9"
+                      cy="7"
+                      r="4"
+                      stroke="#6b7280"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M23 21v-2a4 4 0 0 0-3-3.87"
+                      stroke="#6b7280"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M16 3.13a4 4 0 0 1 0 7.75"
+                      stroke="#6b7280"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                    {t('sidebar.group_management')}
+                  </span>
+                </div>
+              </NavLink>
+            </li>
               {/* course */}
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.startsWith('/course') && 'bg-teal-300 text-blue-500'}`}>
                 <NavLink

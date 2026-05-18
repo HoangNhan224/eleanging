@@ -37,7 +37,8 @@ const ROUTES = {
   group_exam_detail: '/group_exam_detail/:id',
   exam_result: '/exam_result',
   comment_question: '/exam/:examId/question/:questionId',
-  progressDashboard: '/progress-dashboard'
+  progressDashboard: '/progress-dashboard',
+  groupManagement: '/group-management'
 }
 
 export default ROUTES

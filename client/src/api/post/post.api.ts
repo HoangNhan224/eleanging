@@ -521,9 +521,6 @@ export const fetchUserPagination = async ({
 export const getCourse = async (): Promise<AxiosResponse<any>> => {
   return await requestWithJwt.get<any>('/courses/getAllCourse')
 }
-export const getGroup = async (): Promise<AxiosResponse<any>> => {
-  return await requestWithJwt.get<any>('/groups/getAllGroup')
-}
 export const checkUpdates = async (userId: string, courseId: string): Promise<AxiosResponse<any>> => {
   return await requestWithJwt.get<any>(`/lessions/checkUpdates/${userId}/${courseId}`)
 }
@@ -1056,4 +1053,51 @@ export const getProgressSummary = async (params?: {
   courseId?: string
 }): Promise<AxiosResponse<any>> => {
   return await requestWithJwt.get<any>('/admin-learning-progress/summary', { params })
+}
+export const getGroup = async (): Promise<AxiosResponse<any>> => {
+  const response = await requestWithJwt.get<any>('/groups')
+
+  return {
+    ...response,
+    data: Array.isArray(response?.data?.data)
+      ? response.data.data
+      : []
+  }
+}
+
+export const createGroup = async (payload: {
+  name: string
+  description?: string
+}): Promise<AxiosResponse<any>> => {
+  return await requestWithJwt.post<any>('/groups', {
+    data: payload
+  })
+}
+
+export const updateGroup = async (
+  id: string,
+  payload: {
+    name: string
+    description?: string
+  }
+): Promise<AxiosResponse<any>> => {
+  return await requestWithJwt.put<any>(`/groups/${id}`, {
+    data: payload
+  })
+}
+
+export const deleteGroup = async (
+  id: string
+): Promise<AxiosResponse<any>> => {
+  return await requestWithJwt.delete<any>(`/groups/${id}`)
+}
+
+export const deleteGroups = async (
+  ids: number[]
+): Promise<AxiosResponse<any>> => {
+  return await requestWithJwt.delete<any>('/groups/bulk-delete', {
+    data: {
+      ids
+    }
+  })
 }

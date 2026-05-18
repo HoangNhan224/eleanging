@@ -6,7 +6,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* PAGE: TableUser
 ========================================================================== */
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState, useMemo, useRef } from 'react'
 import {
   MaterialReactTable,
   type MRT_ColumnDef,
@@ -18,10 +18,9 @@ import { fetchAllUser, fetchAllRole, updateUser, deleteUser, getGroup, createUse
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddIcon from '@mui/icons-material/Add'
-import { useForm, Controller } from 'react-hook-form'
 import { Box, Button, DialogActions, DialogContent, DialogTitle, IconButton, Tooltip, TextField, MenuItem } from '@mui/material'
 import ModalComponent from '../../../components/Modal'
-
+import AddUserModal, { CreateUserForm, FormControls } from 'components/AddUserModal'
 import { toast } from 'react-toastify'
 
 import { MRT_Localization_VI } from 'material-react-table/locales/vi'
@@ -58,13 +57,7 @@ interface Group {
   name: string
   description: string
 }
-interface CreateUserForm {
-  email: string
-  firstName: string
-  lastName: string
-  groupId: string
-  roleId: string
-}
+
 /**
  * TableUser component displays a table of users with various functionalities.
  *
@@ -86,10 +79,6 @@ interface CreateUserForm {
 
 const TableUser = () => {
   /**
- * State to control create user modal visibility
- */
-  const { handleSubmit, control, reset, formState: { errors } } = useForm<CreateUserForm>()
-  /**
  * Store user list data
  */
   const { t } = useTranslation()
@@ -109,6 +98,19 @@ const TableUser = () => {
   const tokensFromRedux = useSelector(selectAuthTokens)
   const currentUserRoleFromRedux = useSelector(selectUserRole)
   const currentUser = tokensFromRedux?.id ? Number(tokensFromRedux.id) : null
+
+  //  Ref nhận setError / setFocus / reset từ AddUserModal
+  // để đẩy lỗi server-side vào đúng field trong form
+  const formControlsRef = useRef<FormControls | null>(null)
+
+  const roleMap = useMemo(() => {
+    // Tạo map role theo id để tra cứu nhanh { [roleId]: role }
+    return Object.fromEntries(roles.map(r => [r.id, r]))
+  }, [roles])
+  // Tạo map group theo id để tra cứu nhanh { [groupId]: group }
+  const groupMap = useMemo(() => {
+    return Object.fromEntries(groups.map(g => [g.id, g]))
+  }, [groups])
   /**
    * Fetches all user and role data on component mount.
    *
@@ -191,76 +193,114 @@ const TableUser = () => {
     setIsModalOpen(true)
   }
   /**
- * Handle create new user.
- *
- * @author NhanHoang
- * @param {CreateUserForm} formData - Form data input from modal
- * @description
- * - Combine firstName and lastName into username
- * - Call API create user
- * - Handle error from backend (duplicate email, etc.)
- * - Update table realtime
- * @returns {Promise<void>}
- */
-  const handleCreateUser = async (formData: CreateUserForm) => {
+   * Đẩy lỗi server (email/username trùng) vào đúng field của AddUserModal.
+   *
+   * @author NhanHoang
+   * @param {any} error - Lỗi trả về từ API
+   * @returns {void}
+   */
+  const handleCreateUserError = (error: any): void => {
+    const controls = formControlsRef.current
+    if (!controls) return
+
+    const { setError, setFocus } = controls
+
+    const errorCode =
+      error?.response?.data?.code ||
+      error?.response?.data?.errorCode
+
+    const message =
+      error?.response?.data?.message ||
+      error?.message ||
+      t('userpage.toast.userCreationFailed')
+
+    // Email đã tồn tại
+    if (
+      errorCode === 'EMAIL_ALREADY_EXISTS' ||
+      message?.toLowerCase().includes('email')
+    ) {
+      setError('email', {
+        type: 'server',
+        message: t('userpage.toast.emailAlreadyExists') ?? ''
+      })
+      setFocus('email')
+      toast.error(t('userpage.toast.userCreationFailed') ?? '')
+      return
+    }
+
+    // username trùng → chỉ báo lỗi field username
+    if (
+      errorCode === 'USERNAME_ALREADY_EXISTS' ||
+      message?.toLowerCase().includes('username')
+    ) {
+      setError('username', {
+        type: 'server',
+        message: t('userpage.toast.usernameAlreadyExists') ?? ''
+      })
+      setFocus('username')
+      toast.error(t('userpage.toast.userCreationFailed') ?? '')
+      return
+    }
+
+    toast.error(message)
+  }
+
+  /**
+   * Tạo người dùng mới.
+   * Nhận formData đã được validate từ AddUserModal.
+   *
+   * @author NhanHoang
+   * @async
+   * @param {CreateUserForm} formData - Dữ liệu từ form tạo người dùng
+   * @returns {Promise<void>}
+   */
+  const handleCreateUser = async (formData: CreateUserForm): Promise<void> => {
     try {
-      // TODO combine full name
-      const username = `${formData.firstName} ${formData.lastName}`.trim()
-
-      // 🔥 FIX: ép kiểu đúng cho backend
       const payload = {
-        ...formData,
-        username,
-        password: '123456',
-        roleId: Number(formData.roleId)
+        username: formData.username,
+        roleId: Number(formData.roleId),
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        groupId: Number(formData.groupId)
       }
 
-      // 🔥 LOG PAYLOAD Ở ĐÂY
-      console.log('CREATE USER PAYLOAD:', payload)
+      const { data: newUser } = await createUser(payload)
 
-      // TODO call API
-      const response = await createUser(payload)
+      // i18n cho toast password tạm thời
+      toast.success(
+        <div>
+          <p>{t('userpage.toast.tempPasswordLabel')}</p>
+          <strong
+            style={{ cursor: 'pointer' }}
+            onClick={async () => await navigator.clipboard.writeText(newUser.tempPassword)}
+          >
+            {newUser.tempPassword} 📋
+          </strong>
+          <p style={{ fontSize: '12px' }}>{t('userpage.toast.clickToCopy')}</p>
+        </div>,
+        { autoClose: false }
+      )
 
-      if (response.status === 200) {
-        const createdUser = response.data
-
-        // TODO map role
-        const role = roles.find(r => r.id === createdUser.roleId)
-
-        const newUser: User = {
-          ...createdUser,
-          email: formData.email,
-          fullName: username,
-          roleDescription: role ? role.description : 'N/A'
-        }
-
-        // TODO update UI realtime
-        setData(prev => [newUser, ...prev])
-
-        toast.success(t('userpage.toast.createSuccessfully'))
-
-        reset()
-        setIsCreateModalOpen(false)
+      const newUserMapped = {
+        ...newUser,
+        roleDescription: roleMap[newUser.roleId]?.description ?? 'N/A',
+        groupName: groupMap[newUser.groupId]?.name ?? 'N/A',
+        fullName: `${newUser.firstName} ${newUser.lastName}`
       }
+
+      setData(prevData => [newUserMapped, ...prevData])
+      toast.success(t('userpage.toast.userCreatedSuccessfully'))
+
+      // reset form TRƯỚC khi đóng modal → tránh data cũ còn đọng
+      formControlsRef.current?.reset()
+      setIsCreateModalOpen(false)
     } catch (error: any) {
-      // 🔥 LOG FULL ERROR (QUAN TRỌNG)
-      console.error('ERROR FULL:', error)
-      console.error('ERROR RESPONSE:', error?.response?.data)
-
-      // 🔥 FIX đúng chuẩn Axios
-      if (error?.response?.status === 409) {
-        const message = error?.response?.data?.message
-
-        if (message === 'Email already exists') {
-          toast.error('Email already exists')
-        } else {
-          toast.error(message)
-        }
-      } else {
-        toast.error(t('userpage.toast.createFailed'))
-      }
+      console.error('CREATE USER ERROR:', error)
+      handleCreateUserError(error)
     }
   }
+
   /**
    * Confirms the deletion of a single user.
    *
@@ -666,7 +706,7 @@ const TableUser = () => {
         </Box>
         {/** Add new user button */}
         <Box>
-          <Tooltip title="Add new user">
+          <Tooltip title={t('userpage.Addnewuser')}>
             <span>
               <button
                 className="btn bg-green-500 hover:bg-green-400 p-1.5 rounded-sm"
@@ -742,112 +782,15 @@ const TableUser = () => {
       onCancel={() => setIsSecondModalOpen(false)}
     />
 
-    {/* CREATE USER */}
-    <ModalComponent
-      isOpen={isCreateModalOpen}
-      title="Add new user"
+    {/* CREATE USER — thay inline modal bằng AddUserModal component */}
+    <AddUserModal
+      modalOpen={isCreateModalOpen}
       onClose={() => setIsCreateModalOpen(false)}
-      onCancel={() => setIsCreateModalOpen(false)}
-      onOk={handleSubmit(handleCreateUser)}
-    >
-      <div className="flex flex-col gap-4">
-
-        {/* EMAIL */}
-        <Controller
-          name="email"
-          control={control}
-          rules={{ required: 'Email is required' }}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              label="Email"
-              fullWidth
-              error={!!errors.email}
-              helperText={errors.email?.message}
-            />
-          )}
-        />
-
-        {/* FIRST NAME */}
-        <Controller
-          name="firstName"
-          control={control}
-          rules={{ required: 'First name is required' }}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              label="First Name"
-              fullWidth
-              error={!!errors.firstName}
-              helperText={errors.firstName?.message}
-            />
-          )}
-        />
-
-        {/* LAST NAME */}
-        <Controller
-          name="lastName"
-          control={control}
-          rules={{ required: 'Last name is required' }}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              label="Last Name"
-              fullWidth
-              error={!!errors.lastName}
-              helperText={errors.lastName?.message}
-            />
-          )}
-        />
-
-        {/* GROUP */}
-        <Controller
-          name="groupId"
-          control={control}
-          rules={{ required: 'Group is required' }}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              select
-              label="Group"
-              fullWidth
-              error={!!errors.groupId}
-              helperText={errors.groupId?.message}
-            >
-              {groups.map(group => (
-                <MenuItem key={group.id} value={group.id}>
-                  {group.name}
-                </MenuItem>
-              ))}
-            </TextField>
-          )}
-        />
-
-        {/* ROLE */}
-        <Controller
-          name="roleId"
-          control={control}
-          rules={{ required: 'Role is required' }}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              select
-              label="Role"
-              fullWidth
-              error={!!errors.roleId}
-              helperText={errors.roleId?.message}
-            >
-              {roles.map(role => (
-                <MenuItem key={role.id} value={role.id}>
-                  {role.description}
-                </MenuItem>
-              ))}
-            </TextField>
-          )}
-        />
-
-      </div>
-    </ModalComponent>
+      onOk={handleCreateUser}
+      onRegisterFormControls={(controls) => { formControlsRef.current = controls }}
+      groups={groups}
+      roles={roles}
+    />
   </>
   )
 }

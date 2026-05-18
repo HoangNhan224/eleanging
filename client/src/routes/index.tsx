@@ -130,6 +130,9 @@ const CommentQuestion = loadable(async () => await import('pages/commentQuestion
 const ProgressDashboard = loadable(async () => await import('pages/progressDashboard'), {
   fallback: <Loading />
 })
+const GroupManagement = loadable(async () => await import('pages/groupManagement'), {
+  fallback: <Loading />
+})
 
 const routes: RouteObject[] = [
   {
@@ -321,7 +324,15 @@ const routes: RouteObject[] = [
       { path: ROUTES.addCourse, element: <AddCourseForm /> },
       { path: ROUTES.editCoursePage, element: <EditCourseFrom /> },
       // categorycourse
-      { path: ROUTES.categoryCourse, element: <CategoryCourse /> }
+      { path: ROUTES.categoryCourse, element: <CategoryCourse /> },
+      {
+        path: ROUTES.groupManagement,
+        element: (
+             <AuthRoute allowedRoles={['ADMIN', 'MANAGER']}>
+               <GroupManagement />
+             </AuthRoute>
+        )
+      }
     ]
   }
 ]

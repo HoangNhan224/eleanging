@@ -357,15 +357,6 @@ const categoryCourse = () => {
     renderRowActions: ({ row, table }) => (
       <div className="flex flex-row items-center justify-center space-x-2">
         <Box>
-          <Tooltip title={t('category_course_admin.delete')}>
-            <button className="btn bg-red-500 hover:bg-red-400 p-1.5 rounded-sm" onClick={() => handleDelete(row.original.id)}>
-              <svg className="w-4 h-4 fill-current text-white shrink-0" viewBox="0 0 16 16">
-                <path d="M5 7h2v6H5V7zm4 0h2v6H9V7zm3-6v2h4v2h-1v10c0 .6-.4 1-1 1H2c-.6 0-1-.4-1-1V5H0V3h4V1c0-.6.4-1 1-1h6c.6 0 1 .4 1 1zM6 2v1h4V2H6zm7 3H3v9h10V5z" />
-              </svg>
-            </button>
-          </Tooltip>
-        </Box>
-        <Box>
           <Tooltip title={t('category_course_admin.edit')}>
             <button className="btn bg-sky-500 hover:bg-sky-300 p-1.5 rounded-sm" onClick={() => table.setEditingRow(row)}>
               <svg className="w-4 h-4 fill-current text-white shrink-0" viewBox="0 0 16 16">
@@ -373,6 +364,15 @@ const categoryCourse = () => {
               </svg>
             </button>
             </Tooltip>
+        </Box>
+        <Box>
+          <Tooltip title={t('category_course_admin.delete')}>
+            <button className="btn bg-red-500 hover:bg-red-400 p-1.5 rounded-sm" onClick={() => handleDelete(row.original.id)}>
+              <svg className="w-4 h-4 fill-current text-white shrink-0" viewBox="0 0 16 16">
+                <path d="M5 7h2v6H5V7zm4 0h2v6H9V7zm3-6v2h4v2h-1v10c0 .6-.4 1-1 1H2c-.6 0-1-.4-1-1V5H0V3h4V1c0-.6.4-1 1-1h6c.6 0 1 .4 1 1zM6 2v1h4V2H6zm7 3H3v9h10V5z" />
+              </svg>
+            </button>
+          </Tooltip>
         </Box>
       </div>
     ),

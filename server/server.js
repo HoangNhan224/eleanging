@@ -57,6 +57,7 @@ app.use(cors({
   origin: ['http://localhost:3000', 'http://172.16.0.143:3000', 'http://192.168.110.10:3000'],
   credentials: true
 }))
+
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
