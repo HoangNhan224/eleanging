@@ -118,7 +118,7 @@ const CourseDetail = () => {
   const [isExpanded, setIsExpanded] = useState(false)
   const dataRef = useRef(data)
   const courseLessionRef = useRef(courseLession)
-  const [videoSrc, setVideoSrc] = useState<Plyr.SourceInfo | null>(null)
+  const [videoSrc, setVideoSrc] = useState<any>(null)
   const playerRef = useRef<any>(null)
   const [isVideoError, setIsVideoError] = useState(false)
   const [loading, setLoading] = useState(false)
