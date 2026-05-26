@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useMemo } from 'react'
-import ReactQuillNew, { Quill } from 'react-quill-new'
+import ReactQuillNew, { Quill } from 'react-quill'
 import ImageUploader from 'quill-image-uploader'
 import ImageResizeModule from 'quill-image-resize-module-react'
 import 'quill/dist/quill.snow.css'
