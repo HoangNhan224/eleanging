@@ -285,7 +285,7 @@ const Test: React.FC<TestProps> = ({
                           description={`${t('course_exam.exam_attempt_message')} ${exam?.attempted} ${t('course_exam.time_remaining_message')}`}
                           onClose={handleCancelModalExam}
                           onCancel={handleCancelModalExam}
-                          onOk={() => handleOkContinueOldExamModal?.(exam?.id)}
+                          onOk={async () => await handleOkContinueOldExamModal?.(exam?.id)}
                       />
                       <ModalComponent
                           isOpen={isOpenStartNewExamModal ?? false}
@@ -293,7 +293,7 @@ const Test: React.FC<TestProps> = ({
                           description={`${t('course_exam.exam_attempt_message')} ${exam?.attempted + 1} ${t('course_exam.confirm_start_message')}`}
                           onClose={handleCancelModalExam}
                           onCancel={handleCancelModalExam}
-                          onOk={() => handleOkStartNewExamModal?.(exam?.id)}
+                          onOk={async () => await handleOkStartNewExamModal?.(exam?.id)}
                       />
                   </div>
                 </div>
