@@ -938,7 +938,24 @@ router.post('/chunk-upload', isAuthenticated, checkUserPermission, (req, res) =>
       fs.renameSync(req.file.path, chunkPath)
 
       if (+chunkIndex === +totalChunks - 1) {
-        const newFileName = fileName.split('.')[0] + '_' + Date.now() + path.extname(fileName)
+        function sanitizeFileName (name) {
+          return name
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd')
+            .replace(/Đ/g, 'D')
+            .replace(/[^a-zA-Z0-9.-]/g, '_')
+        }
+
+        const safeName = sanitizeFileName(
+          fileName.split('.')[0]
+        )
+
+        const newFileName =
+          safeName +
+          '_' +
+          Date.now() +
+          path.extname(fileName)
         const finalPath = path.join(__dirname, '../uploads/lessions', newFileName)
         const writeStream = fs.createWriteStream(finalPath)
 

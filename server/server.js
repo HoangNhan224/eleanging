@@ -1,5 +1,6 @@
 const express = require('express')
-const http = require('http')
+const https = require('https')
+const fs = require('fs')
 const { initSocket } = require('./socket')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -38,7 +39,11 @@ const { Op } = require('sequelize')
 const { models } = require('./models')
 
 const app = express()
-const server = http.createServer(app)
+const sslOptions = {
+  key: fs.readFileSync('./ssl/server.key'),
+  cert: fs.readFileSync('./ssl/server.cert')
+}
+const server = https.createServer(sslOptions, app)
 
 app.set('trust proxy', true)
 
@@ -54,7 +59,17 @@ app.set('trust proxy', true)
 //   next()
 // })
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://172.16.0.143:3000', 'http://192.168.110.10:3000'],
+  origin: [
+    'http://localhost:3000',
+    'https://localhost:3000',
+    'http://172.16.0.143:3000',
+    'https://172.16.0.143:3000',
+    'http://192.168.110.10:3000',
+    'https://192.168.110.10:3000',
+    'http://192.168.100.71:3000',
+    'https://192.168.100.71:3000',
+    'https://respondents-events-tramadol-petroleum.trycloudflare.com'
+  ],
   credentials: true
 }))
 
@@ -125,13 +140,15 @@ async function startServer () {
     console.log('All routes saved successfully')
     await createPermissionForAllRoutes()
     console.log('All permissions saved successfully')
-    server.listen(process.env.PORT, () => {
+    server.listen(process.env.PORT, '0.0.0.0', () => {
       console.log('Server (Express + WebSocket) is running')
     })
   } catch (error) {
     console.error('Error starting server:', error)
   }
 }
-
+app.get('/', (req, res) => {
+  res.send('HTTPS backend running')
+})
 initSocket(server)
 startServer()
