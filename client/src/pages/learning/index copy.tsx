@@ -59,10 +59,6 @@ import ROUTES from 'routes/constant'
 import { getFromLocalStorage } from 'utils/functions'
 import { useTheme } from 'services/styled-themes'
 import Plyr, { APITypes } from 'plyr-react'
-
-
-
-
 declare global {
   interface Window {
     YT: any
@@ -151,7 +147,7 @@ const Learning = () => {
   ])
   const [courseData, setCourseData] = useState<CourseData | null>(null)
 
-  const [videoSrc, setVideoSrc] = useState<Plyr.SourceInfo | null>(null)
+  const [videoSrc, setVideoSrc] = useState<any>(null)
   const playerRef = useRef<any>(null)
   const [currentTime, setCurrentTime] = useState(0)
   const isMounted = useRef(false)
@@ -810,7 +806,6 @@ const Learning = () => {
     const checkPDFLoaded = () => {
       if (pdfContainer) {
         if (pdfContainer.scrollHeight > pdfContainer.clientHeight) {
-
           pdfContainer.addEventListener('scroll', handleScroll)
         } else {
           addProgressNoVideo()
