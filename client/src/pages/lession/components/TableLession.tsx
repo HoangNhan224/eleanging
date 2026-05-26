@@ -137,7 +137,7 @@ const Example: React.FC = (props) => {
    */
   const getPdfFilePath = (fileName: string) => {
     try {
-      return `${process.env.REACT_APP_API}/uploads/lessions/${fileName}`
+      return `${process.env.REACT_APP_API}/uploads/lessions/${encodeURIComponent(fileName)}`
     } catch (error) {
       // toast.error(t('lesson.toast.failed_to_fetch_pdf'))
       return null
