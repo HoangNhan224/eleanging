@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "env-cmd -f .env.development nodemon server.js",
-    "start": "env-cmd -f .env.production node server.js"
+    "start": "env-cmd -f .env.production node server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
