@@ -8,9 +8,8 @@ WORKDIR /usr/src/app
 # Bundle app source
 COPY . /usr/src/app
 
-RUN yarn install
+RUN npm install
 
 EXPOSE 8000
 
-CMD [ "yarn", "start" ]
-# CMD [ "yarn", "dev" ]
+CMD [ "npm", "start" ]
