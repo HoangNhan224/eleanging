@@ -68,7 +68,8 @@ app.use(cors({
     'https://192.168.110.10:3000',
     'http://192.168.100.71:3000',
     'https://192.168.100.71:3000',
-    'https://respondents-events-tramadol-petroleum.trycloudflare.com'
+    'https://respondents-events-tramadol-petroleum.trycloudflare.com',
+    'https://eleanging.vercel.app'
   ],
   credentials: true
 }))

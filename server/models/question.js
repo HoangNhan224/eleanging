@@ -81,7 +81,7 @@ const Question = sequelize.define(
       type: DataTypes.STRING
     },
     target_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.BIGINT
     }
   },
   {
