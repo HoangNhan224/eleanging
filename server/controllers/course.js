@@ -693,7 +693,7 @@ router.get('/', isAuthenticated, async (req, res) => {
       size = '8',
       search: searchCondition,
       startDate = '1970-01-01',
-      endDate = '9999-12-31',
+      endDate = '9999-12-30', // FIX: '9999-12-31' overflows MySQL DATETIME when converted to UTC+7 → '10000-01-01'
       category: categoryCondition
     } = req.query
     const offset = (Number(page) - 1) * Number(size)
