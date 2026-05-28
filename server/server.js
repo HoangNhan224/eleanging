@@ -67,12 +67,10 @@ app.use(morgan('combined'))
 app.use(express.json({ limit: '50mb' }))
 
 app.use('/static', express.static(path.join(__dirname, 'public')))
-app.use(`${API_PREFIX}/uploads/lessions`, express.static(path.join(__dirname, 'uploads', 'lessions')))
-app.use(`${API_PREFIX}/uploads/courses`, express.static(path.join(__dirname, 'uploads', 'courses')))
-app.use(`${API_PREFIX}/uploads/avatars`, express.static(path.join(__dirname, 'uploads', 'avatars')))
-app.use(`${API_PREFIX}/uploads/questions`, express.static(path.join(__dirname, 'uploads', 'questions')))
-app.use(`${API_PREFIX}/uploads/exams`, express.static(path.join(__dirname, 'uploads', 'exams')))
-
+app.use(
+  `${API_PREFIX}/uploads`,
+  express.static(path.join(__dirname, 'uploads'))
+)
 app.use(`${API_PREFIX}/auth`, authController)
 app.use(`${API_PREFIX}/init-data`, initDataController)
 app.use(`${API_PREFIX}/exams`, examController)
