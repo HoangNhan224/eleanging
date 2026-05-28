@@ -125,7 +125,7 @@ async function startServer () {
     console.log('All routes saved successfully')
     await createPermissionForAllRoutes()
     console.log('All permissions saved successfully')
-    server.listen(process.env.PORT, '0.0.0.0', () => {
+    server.listen(process.env.PORT || 8000, '0.0.0.0', () => {
       console.log('Server (Express + WebSocket) is running')
     })
   } catch (error) {
