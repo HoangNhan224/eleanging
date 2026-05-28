@@ -138,5 +138,5 @@ async function startServer () {
   }
 }
 
-initSocket(server)
+// initSocket(server)
 startServer()
