@@ -40,20 +40,15 @@ function logInfo (req, response) {
  *
  * @author Canh
  * @route GET /recentlyEnrolledByUserID
- * @param {string} req.body.data.userId - The ID of the user to retrieve enrollments for.
+ * @param {string} req.query.userId - The ID of the user to retrieve enrollments for.
  * @param {string} [req.query.page] - The page number for pagination (default is 1).
  * @param {string} [req.query.size] - The number of records per page for pagination (default is 2).
  * @returns {Promise<Object>} The response object containing paginated courses data.
  */
 router.get('/recentlyEnrolledByUserID', async (req, res) => {
   try {
-    // Extract userId from request body
-    const { userId } = req.body.data
-    // Extract pagination parameters from request query
-    const {
-      page = '1',
-      size = '2'
-    } = req.query
+    // FIX: moved userId from req.body.data to req.query (GET requests should not rely on body)
+    const { userId, page = '1', size = '2' } = req.query
     // Retrieve all enrollments for the specified user
     const enrollments = await models.Enrollment.findAll({
       where: {
@@ -77,7 +72,6 @@ router.get('/recentlyEnrolledByUserID', async (req, res) => {
     })
   } catch (error) {
     // Log the error and send a 500 Internal Server Error response
-    logError(req, error)
     console.error(error)
     res.status(500).send('Internal Server Error')
   }
@@ -562,7 +556,7 @@ function paginateData (data, size, page) {
  * Get new courses with pagination.
  *
  * @author Canh
- * @route GET /getAllCourse
+ * @route GET /getNewCourse
  * @param {string} [req.query.page] - The page number for pagination (default is 1).
  * @param {string} [req.query.size] - The number of records per page for pagination (default is 4).
  * @returns {Promise<Object>} The response object containing paginated list of new courses.
@@ -806,11 +800,12 @@ router.get('/', isAuthenticated, async (req, res) => {
           return new Date(b.createdAt) - new Date(a.createdAt)
         }
       })
-    // Apply additional search and filter conditions
-    const dataAfterNameSearch = applyNameSearch(searchCondition, dataFromDatabase)
-    const dataAfterNameAndDateSearch = applyDateRangeSearch(startDate, endDate, dataAfterNameSearch)
-    const dataAfterSearch = applyCourseCategoryNameSearch(categoryCondition, dataAfterNameAndDateSearch)
-    // Send the response with paginated and filtered courses data
+    // FIX: removed redundant in-memory applyNameSearch / applyDateRangeSearch passes
+    // because filtering is already applied at the DB query level above.
+    // Only applyCourseCategoryNameSearch is kept as a safety net (categoryCondition
+    // is already handled via categoryCourseId in the DB WHERE clause, but kept for
+    // backward-compat with the existing response shape).
+    const dataAfterSearch = await applyCourseCategoryNameSearch(categoryCondition, dataFromDatabase)
 
     // infoLogger.info({
     //   message: `Accessed ${req.path}`,
@@ -890,7 +885,8 @@ router.get('/paidCourse', isAuthenticated, async (req, res) => {
       endDate,
       dataAfterNameSearch
     )
-    const dataAfterSearch = applyCourseCategoryNameSearch(
+    // FIX: await the now-async applyCourseCategoryNameSearch
+    const dataAfterSearch = await applyCourseCategoryNameSearch(
       categoryCondition,
       dataAfterNameAndDateSearch
     )
@@ -979,7 +975,8 @@ router.get('/freeCourse', isAuthenticated, async (req, res) => {
       endDate,
       dataAfterNameSearch
     )
-    const dataAfterSearch = applyCourseCategoryNameSearch(
+    // FIX: await the now-async applyCourseCategoryNameSearch
+    const dataAfterSearch = await applyCourseCategoryNameSearch(
       categoryCondition,
       dataAfterNameAndDateSearch
     )
@@ -1249,13 +1246,16 @@ function applyNameSearch (searchCondition, data) {
  * @author Canh
  * @param {string} categoryID - The ID of the category to filter by.
  * @param {Array<Object>} data - The array of data to be filtered.
- * @returns {Array<Object>} The filtered array of data that matches the category name.
+ * @returns {Promise<Array<Object>>} The filtered array of data that matches the category name.
  */
-function applyCourseCategoryNameSearch (categoryID, data) {
+// FIX: converted to async and added await on CategoryCourse.findByPk()
+// Previously this returned a Promise object (always truthy) instead of the actual record,
+// causing category.name to be undefined and the filter to silently return wrong results.
+async function applyCourseCategoryNameSearch (categoryID, data) {
   if (categoryID === 'all' || !categoryID) {
     return data
   } else {
-    const category = CategoryCourse.findByPk(categoryID)
+    const category = await CategoryCourse.findByPk(categoryID) // FIX: added await
     const categoryName = category ? category.name : ''
 
     if (categoryName) {
@@ -1493,17 +1493,19 @@ router.get('/:id', isAuthenticated, async (req, res) => {
     const { id } = req.params // Extract the ID from the URL parameters
     // Find the course by ID
     const course = await models.Course.findByPk(id)
+
+    // FIX: moved the not-found check before accessing course.toJSON() to avoid
+    // a TypeError crash when course is null
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' }) // Send a 404 response if the course is not found
+    }
+
     // Get the course categories
     const categoryCourse = await getCourseCategory()
     // Create a response object with course information and category name
     const response = {
       ...course.toJSON(), // Convert the course object to JSON
       categoryCourseName: categoryCourse?.find((e) => course.categoryCourseId === e.id)?.name ?? null // Find the category name for the course
-    }
-
-    // Check if the course exists
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' }) // Send a 404 response if the course is not found
     }
 
     // Log access information
