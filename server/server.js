@@ -1,6 +1,6 @@
 const express = require('express')
 const http = require('http')
-const { initSocket } = require('./socket')
+// const { initSocket } = require('./socket')
 const cors = require('cors')
 const morgan = require('morgan')
 const path = require('path')
