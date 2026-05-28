@@ -139,4 +139,11 @@ async function startServer () {
 }
 
 // initSocket(server)
-startServer()
+startServer().then(() => {
+  console.log('START SERVER DONE')
+}).catch((err) => {
+  console.error('START SERVER ERROR:', err)
+})
+setInterval(() => {
+  console.log('SERVER STILL ALIVE', new Date().toISOString())
+}, 10000)
