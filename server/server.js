@@ -39,11 +39,8 @@ const { Op } = require('sequelize')
 const { models } = require('./models')
 
 const app = express()
-const sslOptions = {
-  key: fs.readFileSync('./ssl/server.key'),
-  cert: fs.readFileSync('./ssl/server.cert')
-}
-const server = https.createServer(sslOptions, app)
+
+const server = https.createServer(app)
 
 app.set('trust proxy', true)
 
@@ -130,6 +127,14 @@ cron.schedule('0 0 * * *', async () => {
     console.error('Error when cron job:', error)
   }
 })
+
+if (!fs.existsSync('uploads')) {
+  fs.mkdirSync('uploads', { recursive: true })
+}
+
+if (!fs.existsSync('uploads/avatars')) {
+  fs.mkdirSync('uploads/avatars', { recursive: true })
+}
 
 async function startServer () {
   try {
