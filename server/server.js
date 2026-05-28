@@ -1,6 +1,5 @@
 const express = require('express')
 const http = require('http')
-const fs = require('fs')
 const { initSocket } = require('./socket')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -55,18 +54,7 @@ app.set('trust proxy', true)
 //   next()
 // })
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://localhost:3000',
-    'http://172.16.0.143:3000',
-    'https://172.16.0.143:3000',
-    'http://192.168.110.10:3000',
-    'https://192.168.110.10:3000',
-    'http://192.168.100.71:3000',
-    'https://192.168.100.71:3000',
-    'https://respondents-events-tramadol-petroleum.trycloudflare.com',
-    'https://eleanging.vercel.app'
-  ],
+  origin: ['http://localhost:3000', 'http://172.16.0.143:3000', 'http://192.168.110.10:3000', 'https://eleanging.vercel.app'],
   credentials: true
 }))
 
@@ -81,11 +69,7 @@ app.use(express.json({ limit: '50mb' }))
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(`${API_PREFIX}/uploads/lessions`, express.static(path.join(__dirname, 'uploads', 'lessions')))
 app.use(`${API_PREFIX}/uploads/courses`, express.static(path.join(__dirname, 'uploads', 'courses')))
-app.get('/test-avatar', (req, res) => {
-  const filePath = path.join(__dirname, 'uploads', 'avatars', 'avatardefault.png')
-  console.log(filePath)
-  res.sendFile(filePath)
-})
+app.use(`${API_PREFIX}/uploads/avatars`, express.static(path.join(__dirname, 'uploads', 'avatars')))
 app.use(`${API_PREFIX}/uploads/questions`, express.static(path.join(__dirname, 'uploads', 'questions')))
 app.use(`${API_PREFIX}/uploads/exams`, express.static(path.join(__dirname, 'uploads', 'exams')))
 
@@ -141,39 +125,13 @@ async function startServer () {
     console.log('All routes saved successfully')
     await createPermissionForAllRoutes()
     console.log('All permissions saved successfully')
-    server.listen(process.env.PORT, '0.0.0.0', () => {
+    server.listen(process.env.PORT, () => {
       console.log('Server (Express + WebSocket) is running')
     })
   } catch (error) {
     console.error('Error starting server:', error)
   }
 }
-if (!fs.existsSync('uploads')) {
-  fs.mkdirSync('uploads', { recursive: true })
-}
 
-if (!fs.existsSync('uploads/avatars')) {
-  fs.mkdirSync('uploads/avatars', { recursive: true })
-}
-
-if (!fs.existsSync('uploads/courses')) {
-  fs.mkdirSync('uploads/courses', { recursive: true })
-}
-
-if (!fs.existsSync('uploads/lessions')) {
-  fs.mkdirSync('uploads/lessions', { recursive: true })
-}
-
-if (!fs.existsSync('uploads/questions')) {
-  fs.mkdirSync('uploads/questions', { recursive: true })
-}
-
-if (!fs.existsSync('uploads/exams')) {
-  fs.mkdirSync('uploads/exams', { recursive: true })
-}
-app.get('/', (req, res) => {
-  console.log('ROOT HIT')
-  res.send('Backend running')
-})
 initSocket(server)
 startServer()
