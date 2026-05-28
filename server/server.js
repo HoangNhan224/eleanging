@@ -81,7 +81,11 @@ app.use(express.json({ limit: '50mb' }))
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(`${API_PREFIX}/uploads/lessions`, express.static(path.join(__dirname, 'uploads', 'lessions')))
 app.use(`${API_PREFIX}/uploads/courses`, express.static(path.join(__dirname, 'uploads', 'courses')))
-app.use(`${API_PREFIX}/uploads/avatars`, express.static(path.join(__dirname, 'uploads', 'avatars')))
+app.get('/test-avatar', (req, res) => {
+  const filePath = path.join(__dirname, 'uploads', 'avatars', 'avatardefault.png')
+  console.log(filePath)
+  res.sendFile(filePath)
+})
 app.use(`${API_PREFIX}/uploads/questions`, express.static(path.join(__dirname, 'uploads', 'questions')))
 app.use(`${API_PREFIX}/uploads/exams`, express.static(path.join(__dirname, 'uploads', 'exams')))
 
@@ -168,8 +172,8 @@ if (!fs.existsSync('uploads/exams')) {
   fs.mkdirSync('uploads/exams', { recursive: true })
 }
 app.get('/', (req, res) => {
+  console.log('ROOT HIT')
   res.send('Backend running')
 })
-
 initSocket(server)
 startServer()
