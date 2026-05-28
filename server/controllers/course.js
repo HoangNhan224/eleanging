@@ -697,28 +697,30 @@ router.get('/', isAuthenticated, async (req, res) => {
       category: categoryCondition
     } = req.query
     const offset = (Number(page) - 1) * Number(size)
-    // Initialize search conditions
-    const searchConditions = {
-      where: {}
-    }
 
     // Add publicStatus and publicDate filter
     // publicStatus = 0: Draft - Không hiển thị
     // publicStatus = 1: Hẹn giờ - Kiểm tra publicDate
     // publicStatus = 2: Công khai ngay - Hiển thị luôn
     const now = new Date()
-    searchConditions.where[Op.or] = [
-      { publicStatus: 2 }, // Công khai ngay
+
+    // FIX: wrap all conditions inside Op.and to avoid Sequelize conflicts
+    // when Op.or, name, startDate and categoryCourseId are all set on the
+    // same where object simultaneously (causes malformed SQL / 500 error).
+    const andConditions = [
       {
-        publicStatus: 1,
-        publicDate: { [Op.lte]: now } // Hẹn giờ và đã đến thời gian
+        [Op.or]: [
+          { publicStatus: 2 }, // Công khai ngay
+          {
+            publicStatus: 1,
+            publicDate: { [Op.lte]: now } // Hẹn giờ và đã đến thời gian
+          }
+        ]
       }
     ]
 
     if (searchCondition) {
-      searchConditions.where.name = {
-        [Op.like]: `%${searchCondition}%`
-      }
+      andConditions.push({ name: { [Op.like]: `%${searchCondition}%` } })
     }
     if (startDate || endDate) {
       const s = startDate ? new Date(startDate) : null
@@ -726,13 +728,19 @@ router.get('/', isAuthenticated, async (req, res) => {
       const e = endDate ? new Date(endDate) : null
       if (e) e.setHours(23, 59, 59, 999)
       // Chỉ so theo course.startDate trong [s, e]
-      searchConditions.where.startDate = {
-        ...(s ? { [Op.gte]: s } : {}),
-        ...(e ? { [Op.lte]: e } : {})
-      }
+      andConditions.push({
+        startDate: {
+          ...(s ? { [Op.gte]: s } : {}),
+          ...(e ? { [Op.lte]: e } : {})
+        }
+      })
     }
     if (categoryCondition && categoryCondition !== 'all') {
-      searchConditions.where.categoryCourseId = categoryCondition
+      andConditions.push({ categoryCourseId: categoryCondition })
+    }
+
+    const searchConditions = {
+      where: { [Op.and]: andConditions }
     }
     // Fetch the total count of courses with filtering conditions
     const totalRecords = await models.Course.count(searchConditions)
