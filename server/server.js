@@ -1,5 +1,5 @@
 const express = require('express')
-const https = require('https')
+const http = require('http')
 const fs = require('fs')
 const { initSocket } = require('./socket')
 const cors = require('cors')
@@ -40,7 +40,7 @@ const { models } = require('./models')
 
 const app = express()
 
-const server = https.createServer(app)
+const server = http.createServer(app)
 
 app.set('trust proxy', true)
 
