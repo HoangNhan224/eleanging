@@ -39,7 +39,6 @@ const { Op } = require('sequelize')
 const { models } = require('./models')
 
 const app = express()
-
 const server = http.createServer(app)
 
 app.set('trust proxy', true)
@@ -128,14 +127,6 @@ cron.schedule('0 0 * * *', async () => {
   }
 })
 
-if (!fs.existsSync('uploads')) {
-  fs.mkdirSync('uploads', { recursive: true })
-}
-
-if (!fs.existsSync('uploads/avatars')) {
-  fs.mkdirSync('uploads/avatars', { recursive: true })
-}
-
 async function startServer () {
   try {
     await sequelize.sync()
@@ -153,8 +144,32 @@ async function startServer () {
     console.error('Error starting server:', error)
   }
 }
+if (!fs.existsSync('uploads')) {
+  fs.mkdirSync('uploads', { recursive: true })
+}
+
+if (!fs.existsSync('uploads/avatars')) {
+  fs.mkdirSync('uploads/avatars', { recursive: true })
+}
+
+if (!fs.existsSync('uploads/courses')) {
+  fs.mkdirSync('uploads/courses', { recursive: true })
+}
+
+if (!fs.existsSync('uploads/lessions')) {
+  fs.mkdirSync('uploads/lessions', { recursive: true })
+}
+
+if (!fs.existsSync('uploads/questions')) {
+  fs.mkdirSync('uploads/questions', { recursive: true })
+}
+
+if (!fs.existsSync('uploads/exams')) {
+  fs.mkdirSync('uploads/exams', { recursive: true })
+}
 app.get('/', (req, res) => {
-  res.send('HTTPS backend running')
+  res.send('Backend running')
 })
+
 initSocket(server)
 startServer()
