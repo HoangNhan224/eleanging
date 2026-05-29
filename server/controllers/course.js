@@ -725,8 +725,15 @@ router.get('/', isAuthenticated, async (req, res) => {
     if (startDate || endDate) {
       const s = startDate ? new Date(startDate) : null
       if (s) s.setHours(0, 0, 0, 0)
-      const e = endDate ? new Date(endDate) : null
-      if (e) e.setHours(23, 59, 59, 999)
+      let e = endDate ? new Date(endDate) : null
+      if (e) {
+        // FIX: clamp endDate to MySQL DATETIME max to prevent overflow.
+        // Frontend sends '9999-12-31T00:00:00.000Z'; after timezone conversion
+        // (+7h) this becomes '10000-01-01 06:59:59' which MySQL rejects.
+        const mysqlMaxDate = new Date('9999-12-31T16:59:59.000Z') // 9999-12-31 23:59:59 UTC+7
+        if (e > mysqlMaxDate) e = mysqlMaxDate
+        else e.setHours(23, 59, 59, 999)
+      }
       // Chỉ so theo course.startDate trong [s, e]
       andConditions.push({
         startDate: {
