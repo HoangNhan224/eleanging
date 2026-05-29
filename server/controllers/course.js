@@ -723,7 +723,9 @@ router.get('/', isAuthenticated, async (req, res) => {
     if (startDate || endDate) {
       const s = startDate ? new Date(startDate) : null
       if (s) s.setHours(0, 0, 0, 0)
-
+      if (e && e.getFullYear() >= 9999) {
+        e = new Date('2100-01-01')
+      }
       let e = endDate ? new Date(endDate) : null
 
       if (e) {
