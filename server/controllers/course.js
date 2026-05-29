@@ -725,11 +725,15 @@ router.get('/', isAuthenticated, async (req, res) => {
       if (s) s.setHours(0, 0, 0, 0)
       let e = endDate ? new Date(endDate) : null
       if (e) {
-        // FIX: clamp endDate to MySQL DATETIME max to prevent overflow.
-        // Frontend sends '9999-12-31T00:00:00.000Z'; after timezone conversion
-        // (+7h) this becomes '10000-01-01 06:59:59' which MySQL rejects.
         e = new Date('9999-12-31T15:59:59.000Z') // hardcap safe UTC max
       }
+      // Chỉ so theo course.startDate trong [s, e]
+      andConditions.push({
+        startDate: {
+          ...(s ? { [Op.gte]: s } : {}),
+          ...(e ? { [Op.lte]: e } : {})
+        }
+      })
       // ChềEso theo course.startDate trong [s, e]
       andConditions.push({
         startDate: {
