@@ -728,9 +728,7 @@ router.get('/', isAuthenticated, async (req, res) => {
         // FIX: clamp endDate to MySQL DATETIME max to prevent overflow.
         // Frontend sends '9999-12-31T00:00:00.000Z'; after timezone conversion
         // (+7h) this becomes '10000-01-01 06:59:59' which MySQL rejects.
-        const mysqlMaxDate = new Date('9999-12-31T16:59:59.000Z') // 9999-12-31 23:59:59 UTC+7
-        if (e > mysqlMaxDate) e = mysqlMaxDate
-        else e.setHours(23, 59, 59, 999)
+        e = new Date('9999-12-31T15:59:59.000Z') // hardcap safe UTC max
       }
       // ChềEso theo course.startDate trong [s, e]
       andConditions.push({
