@@ -744,6 +744,11 @@ router.get('/', isAuthenticated, async (req, res) => {
         }
       })
     }
+    const searchConditions = {
+      where: {
+        [Op.and]: andConditions
+      }
+    }
     // Fetch the total count of courses with filtering conditions
     const totalRecords = await models.Course.count(searchConditions)
     // Fetch the courses with limit and offset
