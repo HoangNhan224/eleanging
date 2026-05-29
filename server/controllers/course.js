@@ -692,7 +692,7 @@ router.get('/', isAuthenticated, async (req, res) => {
       size = '8',
       search: searchCondition,
       startDate = '1970-01-01',
-      endDate = '9999-12-30', // FIX: '9999-12-31' overflows MySQL DATETIME when converted to UTC+7 ↁE'10000-01-01'
+      endDate = '2099-12-31',
       category: categoryCondition
     } = req.query
     const offset = (Number(page) - 1) * Number(size)
@@ -723,31 +723,26 @@ router.get('/', isAuthenticated, async (req, res) => {
     if (startDate || endDate) {
       const s = startDate ? new Date(startDate) : null
       if (s) s.setHours(0, 0, 0, 0)
-      let e = endDate ? new Date(endDate) : null
-      if (e) {
-        e = new Date('9999-12-31T15:59:59.000Z') // hardcap safe UTC max
-      }
-      // Chỉ so theo course.startDate trong [s, e]
-      andConditions.push({
-        startDate: {
-          ...(s ? { [Op.gte]: s } : {}),
-          ...(e ? { [Op.lte]: e } : {})
-        }
-      })
-      // ChềEso theo course.startDate trong [s, e]
-      andConditions.push({
-        startDate: {
-          ...(s ? { [Op.gte]: s } : {}),
-          ...(e ? { [Op.lte]: e } : {})
-        }
-      })
-    }
-    if (categoryCondition && categoryCondition !== 'all') {
-      andConditions.push({ categoryCourseId: categoryCondition })
-    }
 
-    const searchConditions = {
-      where: { [Op.and]: andConditions }
+      let e = endDate ? new Date(endDate) : null
+
+      if (e) {
+        e.setHours(23, 59, 59, 999)
+
+        const maxMysqlDate =
+          new Date('9999-12-31T23:59:59.000Z')
+
+        if (e > maxMysqlDate) {
+          e = maxMysqlDate
+        }
+      }
+
+      andConditions.push({
+        startDate: {
+          ...(s ? { [Op.gte]: s } : {}),
+          ...(e ? { [Op.lte]: e } : {})
+        }
+      })
     }
     // Fetch the total count of courses with filtering conditions
     const totalRecords = await models.Course.count(searchConditions)
