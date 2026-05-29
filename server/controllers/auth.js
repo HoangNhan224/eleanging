@@ -410,7 +410,8 @@ router.post('/login', async (req, res) => {
     // TODO Set refresh token cookie with long expiration time if "Keep me logged in" is selected
     const cookieOptions = {
       httpOnly: true,
-      sameSite: 'Lax',
+      secure: true,
+      sameSite: 'none',
       maxAge: tokenExpiryTime
     }
     res.cookie('refreshToken', refreshToken, cookieOptions)
