@@ -723,22 +723,24 @@ router.get('/', isAuthenticated, async (req, res) => {
     if (startDate || endDate) {
       const s = startDate ? new Date(startDate) : null
       if (s) s.setHours(0, 0, 0, 0)
+    
+      let e = endDate ? new Date(endDate) : null
+    
       if (e && e.getFullYear() >= 9999) {
         e = new Date('2100-01-01')
       }
-      let e = endDate ? new Date(endDate) : null
-
+    
       if (e) {
         e.setHours(23, 59, 59, 999)
-
+    
         const maxMysqlDate =
           new Date('9999-12-31T23:59:59.000Z')
-
+    
         if (e > maxMysqlDate) {
           e = maxMysqlDate
         }
       }
-
+    
       andConditions.push({
         startDate: {
           ...(s ? { [Op.gte]: s } : {}),
