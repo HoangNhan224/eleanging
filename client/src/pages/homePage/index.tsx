@@ -155,7 +155,7 @@ const HomePage = () => {
   const [currentTab, setCurrentTab] = useState(0)
   const defaultStartDate = new Date('1970-01-01')
   const [startDate, setStartDate] = useState<Date | null>(null)
-  const defaultEndDate = null
+  const defaultEndDate = undefined
   const [endDate, setEndDate] = useState<Date | null>(null)
   const [dataCategory, setDataCategory] = useState<any>(null)
   const [categorySearch, setCategorySearch] = useState('all')
