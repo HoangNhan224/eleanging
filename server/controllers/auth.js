@@ -104,7 +104,8 @@ router.get('/google/callback', (req, res, next) => {
       // TODO Set refresh token in cookies
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
-        sameSite: 'Lax',
+        secure: true,
+        sameSite: 'none',
         maxAge: REFRESH_TOKEN_LIFE_LONG
       })
       // TODO Redirect to the login page with the necessary information
@@ -194,7 +195,8 @@ router.get('/microsoft/callback', (req, res, next) => {
       const key = CryptoJS.AES.encrypt((dataForAccessToken.GroupWithRoles?.description || ''), 'Access_Token_Secret_#$%_ExpressJS_Authentication').toString()
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
-        sameSite: 'Lax',
+        secure: true,
+        sameSite: 'none',
         maxAge: REFRESH_TOKEN_LIFE_LONG
       })
       const redirectUrl = `${process.env.FRONTEND_URL}/login?microsoftAuthSuccess=true&accessToken=${accessToken}&id=${user.id}&firstName=${encodeURIComponent(user.firstName)}&lastName=${encodeURIComponent(user.lastName)}&email=${encodeURIComponent(user.email)}&key=${encodeURIComponent(key)}&avatar=${encodeURIComponent(user.avatar)}`
