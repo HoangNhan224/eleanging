@@ -571,15 +571,16 @@ router.get('/getNewCourse', isAuthenticated, async (req, res) => {
     const offset = (parseInt(page) - 1) * limit
 
     // Build where condition for publicStatus and publicDate
-    // publicStatus = 0: Draft - Không hiển thềE    // publicStatus = 1: Hẹn giềE- Kiểm tra publicDate
-    // publicStatus = 2: Công khai ngay - Hiển thềEluôn
+    // publicStatus = 0: Draft - Không hiển thị
+    // publicStatus = 1: Hẹn giờ - Kiểm tra publicDate
+    // publicStatus = 2: Công khai ngay - Hiển thị luôn
     const now = new Date()
     const whereCondition = {
       [Op.or]: [
         { publicStatus: 2 }, // Công khai ngay
         {
           publicStatus: 1,
-          publicDate: { [Op.lte]: now } // Hẹn giềEvà đã đến thời gian
+          publicDate: { [Op.lte]: now } // Hẹn giờ và đã đến thời gian
         }
       ]
     }
@@ -692,14 +693,15 @@ router.get('/', isAuthenticated, async (req, res) => {
       size = '8',
       search: searchCondition,
       startDate = '1970-01-01',
-      endDate = '9999-12-30', // FIX: '9999-12-31' overflows MySQL DATETIME when converted to UTC+7 ↁE'10000-01-01'
+      endDate = '9999-12-30', // FIX: '9999-12-31' overflows MySQL DATETIME when converted to UTC+7 → '10000-01-01'
       category: categoryCondition
     } = req.query
     const offset = (Number(page) - 1) * Number(size)
 
     // Add publicStatus and publicDate filter
-    // publicStatus = 0: Draft - Không hiển thềE    // publicStatus = 1: Hẹn giềE- Kiểm tra publicDate
-    // publicStatus = 2: Công khai ngay - Hiển thềEluôn
+    // publicStatus = 0: Draft - Không hiển thị
+    // publicStatus = 1: Hẹn giờ - Kiểm tra publicDate
+    // publicStatus = 2: Công khai ngay - Hiển thị luôn
     const now = new Date()
 
     // FIX: wrap all conditions inside Op.and to avoid Sequelize conflicts
@@ -711,7 +713,7 @@ router.get('/', isAuthenticated, async (req, res) => {
           { publicStatus: 2 }, // Công khai ngay
           {
             publicStatus: 1,
-            publicDate: { [Op.lte]: now } // Hẹn giềEvà đã đến thời gian
+            publicDate: { [Op.lte]: now } // Hẹn giờ và đã đến thời gian
           }
         ]
       }
@@ -732,7 +734,7 @@ router.get('/', isAuthenticated, async (req, res) => {
         if (e > mysqlMaxDate) e = mysqlMaxDate
         else e.setHours(23, 59, 59, 999)
       }
-      // ChềEso theo course.startDate trong [s, e]
+      // Chỉ so theo course.startDate trong [s, e]
       andConditions.push({
         startDate: {
           ...(s ? { [Op.gte]: s } : {}),
